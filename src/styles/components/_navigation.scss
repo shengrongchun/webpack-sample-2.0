@@ -1,0 +1,564 @@
+.navigation-verticle {
+    > ul {
+        .no-link {
+            display: block;
+            position: relative;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        a {
+            color: $body-color;
+            text-decoration: none;
+            @include transition();
+        }
+        span {
+            @include transition();
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        > li {
+            background: $sidebar-group-bg;
+            border-bottom: 1px solid $sidebar-border;
+
+            i {
+                color: $sidebar-icon-color;
+                width: 25px;
+                font-size: 16px;
+                text-align: center;
+            }
+            .no-link:after {
+                float: right;
+                margin: 2px 0 0;
+                content: '\f105';
+                font-size: 12px;
+                font-family: $font-family-icon;
+                color: $sidebar-icon-color;
+            }
+        }
+        > li.open {
+            background: transparent;
+
+            > a, > a:focus, >.no-link {
+                background: $sidebar-group-active-bg !important;
+                color: $sidebar-group-active-color;
+                i {
+                    color: $sidebar-group-active-color;
+                }
+            }
+            > .no-link:after {
+                content: '\f107';
+                color: $sidebar-group-active-color;
+            }
+        }
+        > li:hover, > li.open:hover {
+            background: transparent;
+
+            > a, > a:focus, >.no-link {
+                background: $sidebar-group-hover-bg;
+            }
+        }
+        > li ul:before {
+            content: ' ';
+            display: block;
+            margin-top: 15px;
+        }
+        > li ul:after {
+            content: ' ';
+            display: block;
+            margin-top: 5px;
+        }
+        > li ul {
+            overflow: hidden;
+            height: 0;
+
+            li {
+                border: none;
+                font-size: 0.93em;
+                padding: 0 0 9px 27px;
+                background: transparent;
+
+                a {
+                    display: block;
+                }
+                a:hover {
+                    color: $sidebar-group-child-hover-color;
+                }
+                a:after {
+                    display: none;
+                }
+            }
+
+            li.active {
+                a {
+                    color: $sidebar-group-child-hover-color;
+                }
+            }
+        }
+    }
+}
+
+.navigation-child {
+    ul {
+        display: none;
+        position: absolute;
+        width: 200%;
+        left: 0;
+        padding: 5px 0;
+        list-style: none;
+        background: #fff;
+        z-index: 1;
+        
+        box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.07);
+
+        li {
+            position: relative;
+            border-bottom: 1px solid #f5f5f5;
+            @include transition();
+
+            &.collapsed > a:after, &.collapsed > span:after {
+                content: "\f105";
+                font-family: $font-family-icon;
+                float: right;
+                color: $gray-light;
+            }
+
+            a, span {
+                display: block;
+                color: $gray;
+                text-decoration: none;
+                padding: 6px 10px 6px 10px;
+            }
+
+            &:hover {
+                background: $gray-lightest;
+            }
+
+            &:last-child {
+                border: none;
+            }
+        }
+
+        ul {
+            width: 100%;
+            top: 0;
+            left: 100%;
+        }
+    }
+}
+
+// 导航式样1
+.navigation-1 {
+    list-style:none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    &:before {
+        height: 3px;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background: $gray-lightest;
+    }
+
+    > li {
+        float: left;
+        position: relative;
+        cursor: pointer;
+        @include transition(all, 0.2s);
+
+        > a, > span {
+            color: $gray;
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 15px;
+
+            &:hover, &:focus {
+                background: none;
+            }
+        }
+
+        &:before {
+            @include transition(all, 0.2s, ease-in-out);
+            content: '';
+            display: block;
+            height: 3px;
+            width: 100%;
+            position: absolute;
+            top: -3px;
+            left: 0;
+            background: $blue-light;
+            @include vendor(transform, scale(0));
+            opacity: 0;
+        }
+
+        &.active:before, &:hover:before {
+            @include vendor(transform, scale(1));
+            opacity: 1;
+        }
+
+        &.active:before {
+            background: $blue;
+        }
+
+        &.active {
+            background: #f6f6f6;
+        }
+
+        &:hover {
+            background: #f8f8f8;
+        }
+
+        @extend .navigation-child;
+    }
+}
+
+
+// 导航式样2
+.navigation-2 {
+    list-style:none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    > li {
+        float: left;
+        position: relative;
+        cursor: pointer;
+
+        > a, > span {
+            padding: 10px 15px;
+            color: $gray;
+            text-decoration: none;
+            display: inline-block;
+
+            &:hover, &:focus {
+                background: none;
+            }
+        }
+
+        &:before {
+            @include transition(all, 0.2s, ease-in-out);
+            content: '';
+            display: block;
+            height: 3px;
+            width: 100%;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            background: $blue-light;
+            @include vendor(transform, scale(0));
+            opacity: 0;
+        }
+
+        &.active:before, &:hover:before {
+            @include vendor(transform, scale(1));
+            opacity: 1;
+        }
+
+        &.active:before {
+            background: $blue;
+        }
+
+        @extend .navigation-child;
+    }
+}
+
+// 导航样式3 
+.navigation-3 {
+    display: inline-block;
+    list-style:none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+        float: left;
+        margin: 0 2px 0 0;
+        position: relative;
+
+        > a, > span {
+            color: $gray;
+            background: #f6f6f6;
+            padding: 10px 25px;
+            text-decoration: none;
+            @include transition();
+
+            &:hover {
+                background: $blue-light;
+                color: $white;
+            }
+        }
+
+        &.active {
+            a, span {
+                background: $blue;
+                color: $white;
+            }
+        }
+
+        @extend .navigation-child;
+    }
+}
+
+// 导航样式4 
+.navigation-4 {
+    display: inline-block;
+    list-style:none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+        float: left;
+        margin: 0 2px 0 0;
+        position: relative;
+        padding: 0 0 5px 0;
+
+        > a, > span {
+            padding: 0 15px;
+            border-left: 1px solid #eee;
+            color: $gray;
+            text-decoration: none;
+            @include transition(all, 0.2s, ease-in-out);
+
+            &:hover, &:focus {
+                color: $blue;
+                background: none;
+            }
+        }
+
+        &:first-child {
+            a, span {
+                border-left: none;
+            }
+        }
+
+        &.active {
+            > a, > span {
+                color: $blue;
+            }
+        }
+
+        @extend .navigation-child;
+    }
+}
+
+// 导航样式5
+.navigation-5 {
+    @extend .navigation-4;
+    margin: 0 15px;
+    display: block;
+    padding-bottom: 10px;
+    border-bottom: 4px solid $gray-lightest;
+    li {
+        position: relative;
+        &.active {
+            &:after {
+                font-family: $font-family-icon;
+                content: "\f0d8";
+                display: block;
+                text-align: center;
+                line-height: 100%;
+                vertical-align: bottom;
+                color: $gray-lightest;
+                position: absolute;
+                width: 100%;
+                bottom: -17px;
+                font-size: 1.4em;
+            }
+        }
+    }
+}
+
+.navigation-verticle-1 {
+    list-style:none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+        border-bottom: 1px solid $sidebar-border;
+        > a, > span {
+            display: block;
+            background: $sidebar-group-bg;
+            padding: 10px 15px;
+            color: $gray;
+            text-decoration: none;
+            cursor: pointer;
+            @include transition();
+
+            &:hover {
+                background: $sidebar-group-hover-bg;
+            }
+
+            > i {
+                width: 26px;
+                font-size: 16px;
+                text-align: center;
+                color: $gray-light;
+            }
+        }
+
+        &.expanded, &.active {
+            > a, > span {
+                background: $sidebar-group-active-bg;
+                color: $sidebar-group-active-color;
+                i {
+                    color: $sidebar-group-active-color;
+                }
+            }
+        }
+
+        &.expanded, &.collapsed {
+            > a:after, > span:after {
+                float: right;
+                margin: 2px 0 0;
+                font-size: 12px;
+                font-family: $font-family-icon;
+                content: '\f107';
+                color: $sidebar-group-active-color;
+            }
+        }
+
+        &.collapsed {
+            > a:after, > span:after {
+                content: '\f105';
+                color: $sidebar-icon-color;
+            }
+        }
+
+        // 二级菜单
+        ul {
+            &:before {
+                content: ' ';
+                display: block;
+                height: 5px;
+            }
+
+            &:after {
+                content: ' ';
+                display: block;
+                height: 5px;
+            }
+        }
+
+        ul {
+            list-style:none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                margin: 0 15px;
+                a, span {
+                    display: block;
+                    color: $gray;
+                    padding: 5px 0;
+                    text-decoration: none;
+                    cursor: pointer;
+                    @include transition();
+
+                    &:hover {
+                        color: $sidebar-group-child-hover-color;
+                    }
+
+                    i {
+                        width: 26px;
+                        font-size: 16px;
+                        text-align: center;
+                        color: $gray-light;
+                    }
+                }
+
+                &.active {
+                    a, span {
+                        color: $sidebar-group-child-hover-color;
+                    }
+                }
+            }
+        }
+    }
+
+    &.ui-navigation {
+        ul {
+            overflow: hidden;
+            height: 0;
+            @include transition();
+        }
+    }
+}
+
+.navigation-verticle-2 {
+    @extend .navigation-verticle-1;
+    > li {
+        border-bottom: none;
+        > a, > span {
+            background: #293846;
+            color: #c3ccdb;
+            &:hover {
+                background: #11191f;
+            }
+
+            > i {
+                color: #afb9c9;
+            }
+        }
+
+        &.expanded, &.active {
+            > a, > span {
+                background: #1d2933;
+                color: $white;
+                i {
+                    color: $white;
+                }
+            }
+        }
+
+        ul {
+            background: #2d3e4d;
+
+            li {
+                a, span {
+                    color: #c3ccdb;
+
+                    &:hover {
+                        color: $white;
+                    }
+
+                    i {
+                        color: #afb9c9;
+                    }
+                }
+
+                &.active {
+                    > a, > span {
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.navbar {
+    .navbar-form {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+.navigation-size-xm {
+    font-size: 12px;
+}
+
+.navigation-size-sm {
+    font-size: 14px;
+}
+
+.navigation-size-md {
+    font-size: 16px;
+}
+
+.navigation-size-lg {
+    font-size: 18px;
+}

@@ -1,0 +1,10 @@
+<div>
+    <ui-header>
+        <ul class="nav navbar-nav navbar-right">
+            <li ng-class="{'actived': vm.currentPath == ''}"><a href="#!/">首页</a></li>
+            <li ng-class="{'actived': vm.currentPath == 'start'}"><a href="#!/start">开始使用</a></li>
+            <li ng-class="{'actived': vm.currentPath == 'css'}"><a ui-sref="css/button">CSS样式</a></li>
+            <li ng-class="{'actived': vm.currentPath == 'components'}"><a href="#!/components/panel">Web组件</a></li>
+        </ul>
+    </ui-header>
+</div>

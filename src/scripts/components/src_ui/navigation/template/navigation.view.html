@@ -1,0 +1,15 @@
+<ul class="{{type}} ui-navigation clearfix">
+    <li class="link-root" ng-repeat="link in links" ng-include="'children.html'" ng-class="{'collapsed': link.children && link.children.length > 0, 'active': currentUrl == link.link}"></li>
+    <!-- 子菜单模版 -->
+    <script type="text/ng-template" id="children.html">
+        <a ng-if="link.link" ng-href="{{link.link}}">
+            <i ng-if="link.icon" class="fa" ng-class="link.icon && 'fa-' + link.icon"></i> {{link.name}}
+        </a>
+        <span ng-if="!link.link">
+            <i ng-if="link.icon" class="fa" ng-class="link.icon && 'fa-' + link.icon"></i> {{link.name}}
+        </span>
+        <ul ng-if="link.children">
+            <li ng-repeat="link in link.children" ng-class="{'collapsed': link.children, 'active': currentUrl == link.link}" ng-include="'children.html'"></li>
+        </ul>
+    </script>
+</ul>

@@ -1,0 +1,123 @@
+{
+    "resultCode": "0",
+    "resultMsg": "success",
+    "data": {
+        "records": [{
+            "name": "开发者门户",
+            "icon": "home",
+            "children": [{
+                "name": "二级菜单",
+                "icon": "caret-right",
+                "children": [{
+                    "name": "三级菜单",
+                    "icon": "caret-right",
+                    "children": [{
+                        "name": "四级菜单",
+                        "icon": "caret-right"
+                    }, {
+                        "name": "四级菜单",
+                        "icon": "caret-right"
+                    }]
+                }, {
+                    "name": "三级菜单",
+                    "icon": "caret-right"
+                }]
+            }, {
+                "name": "二级菜单",
+                "icon": "caret-right",
+                "children": [{
+                    "name": "三级菜单",
+                    "icon": "caret-right"
+                }, {
+                    "name": "三级菜单",
+                    "icon": "caret-right"
+                }]
+            }]
+        }, {
+            "name": "系统管理中心",
+            "children": [{
+                "name": "二级菜单",
+                "icon": "caret-right",
+                "children": [{
+                    "name": "三级菜单",
+                    "icon": "caret-right"
+                }, {
+                    "name": "三级菜单",
+                    "icon": "caret-right"
+                }]
+            }, {
+                "name": "二级菜单",
+                "icon": "caret-right",
+                "children": [{
+                    "name": "二级菜单",
+                    "icon": "caret-right"
+                }, {
+                    "name": "二级菜单",
+                    "icon": "caret-right"
+                }]
+            }, {
+                "name": "二级菜单",
+                "icon": "caret-right",
+                "children": [{
+                    "name": "二级菜单",
+                    "icon": "caret-right"
+                }, {
+                    "name": "二级菜单",
+                    "icon": "caret-right"
+                }]
+            }, {
+                "name": "二级菜单",
+                "icon": "caret-right",
+                "children": [{
+                    "name": "二级菜单",
+                    "icon": "caret-right"
+                }, {
+                    "name": "二级菜单",
+                    "icon": "caret-right"
+                }]
+            }]
+        }, {
+            "name": "系统监控中心",
+            "children": [{
+                "name": "二级菜单",
+                "icon": "caret-right"
+            }]
+        }, {
+            "name": "数据库管理中心",
+            "children": [{
+                "name": "二级菜单",
+                "icon": "caret-right"
+            }, {
+                "name": "二级菜单",
+                "icon": "caret-right"
+            }, {
+                "name": "二级菜单",
+                "icon": "caret-right"
+            }, {
+                "name": "二级菜单",
+                "icon": "caret-right"
+            }]
+        }, {
+            "name": "缓存管理中心",
+            "children": [{
+                "name": "二级菜单",
+                "icon": "caret-right"
+            }, {
+                "name": "二级菜单",
+                "icon": "caret-right"
+            }, {
+                "name": "二级菜单",
+                "icon": "caret-right"
+            }, {
+                "name": "二级菜单",
+                "icon": "caret-right"
+            }]
+        }, {
+            "name": "负载均衡管理中心",
+            "children": [{
+                "name": "二级菜单",
+                "icon": "caret-right"
+            }]
+        }]
+    }
+}

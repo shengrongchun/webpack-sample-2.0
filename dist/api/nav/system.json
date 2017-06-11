@@ -1,0 +1,18 @@
+{
+    "resultCode": "0",
+    "resultMsg": "success",
+    "data": {
+        "pageCount": 1,
+        "pageNow": 1,
+        "pageSize": 10,
+        "records": [{
+            "navLink": "",
+            "navName": "权限管理",
+            "sub": [{
+                "navLink": "/system/authorization/user",
+                "navName": "用户管理"
+            }]
+        }],
+        "rowCount": 3
+    }
+}

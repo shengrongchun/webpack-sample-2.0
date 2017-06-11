@@ -1,0 +1,58 @@
+{
+    "resultStatus": "success",
+    "page": {
+        "totalItems": 25,
+        "currentPage": 4
+    },
+    "records": [{
+        "index": 6,
+        "index_start_at": 61,
+        "integer": 3,
+        "float": 11.8049,
+        "name": "Kelly",
+        "surname": "Whitley",
+        "fullname": "Richard Singleton",
+        "email": "gretchen@hardy.sg",
+        "bool": true
+    }, {
+        "index": 7,
+        "index_start_at": 62,
+        "integer": 35,
+        "float": 19.4986,
+        "name": "Martha",
+        "surname": "Hensley",
+        "fullname": "Steven Bowden",
+        "email": "adam@roach.dk",
+        "bool": false
+    }, {
+        "index": 8,
+        "index_start_at": 63,
+        "integer": 40,
+        "float": 14.5146,
+        "name": "Lynne",
+        "surname": "Barrett",
+        "fullname": "Anne Locklear",
+        "email": "doris@kelley.nc",
+        "bool": false
+    }, {
+        "index": 9,
+        "index_start_at": 64,
+        "integer": 29,
+        "float": 11.3354,
+        "name": "Barry",
+        "surname": "Burton",
+        "fullname": "Shirley Floyd",
+        "email": "katie@olson.ie",
+        "bool": false
+    }, {
+        "index": 10,
+        "index_start_at": 65,
+        "integer": 31,
+        "float": 12.7673,
+        "name": "Rhonda",
+        "surname": "McKay",
+        "fullname": "Bernard Simpson",
+        "email": "harold@floyd.tf",
+        "bool": true
+    }]
+}

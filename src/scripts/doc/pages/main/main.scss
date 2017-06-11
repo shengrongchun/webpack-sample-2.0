@@ -1,0 +1,11 @@
+.loginSlider {
+    float: left;
+    width: 660px;
+    //background: red;
+}
+/* 下面这种写法和上面一样，局部
+:local (.loginSlider) {
+    
+} */
+/* 全局写法
+:gobal (.loginSlider) {} */

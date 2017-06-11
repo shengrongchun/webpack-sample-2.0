@@ -1,0 +1,59 @@
+{
+    "resultStatus": "success",
+    "page": {
+        "totalItems": 25,
+        "currentPage": 1
+    },
+    "records": [{
+        "index": 1,
+        "index_start_at": 56,
+        "integer": 27,
+        "float": 17.4695,
+        "name": "Robyn",
+        "surname": "Hess",
+        "fullname": "Leroy Hall",
+        "email": "erica@middleton.nl",
+        "bool": true
+    }, {
+        "index": 2,
+        "index_start_at": 57,
+        "integer": 17,
+        "float": 12.0763,
+        "name": "Allan",
+        "surname": "Steele",
+        "fullname": "Dean Washington",
+        "email": "erin@mcmillan.mn",
+        "bool": true,
+        "checkable": false
+    }, {
+        "index": 3,
+        "index_start_at": 58,
+        "integer": 19,
+        "float": 10.4909,
+        "name": "Milton",
+        "surname": "Coley",
+        "fullname": "Chris Houston",
+        "email": "oscar@reilly.bo",
+        "bool": true
+    }, {
+        "index": 4,
+        "index_start_at": 59,
+        "integer": 27,
+        "float": 16.5149,
+        "name": "Sidney",
+        "surname": "Lindsay",
+        "fullname": "Warren Glover",
+        "email": "billie@farrell.mk",
+        "bool": true
+    }, {
+        "index": 5,
+        "index_start_at": 60,
+        "integer": 34,
+        "float": 14.6347,
+        "name": "Donna",
+        "surname": "Bray",
+        "fullname": "George Riley",
+        "email": "brett@coley.za",
+        "bool": true
+    }]
+}

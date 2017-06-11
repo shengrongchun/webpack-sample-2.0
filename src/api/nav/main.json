@@ -1,0 +1,15 @@
+{
+    "resultCode": "0",
+    "resultMsg": "success",
+    "data": {
+        "pageCount": 1,
+        "pageNow": 1,
+        "pageSize": 10,
+        "records": [{
+            "navLink": "/main",
+            "navName": "首页",
+            "navIcon": "home"
+        }],
+        "rowCount": 3
+    }
+}

@@ -1,0 +1,22 @@
+class Service {
+    constructor($http, $q) {
+        "ngInject";
+        
+        this.$http = $http;
+        this.$q = $q;
+    }
+
+    get(category) {
+        var deferred = this.$q.defer();
+        this.$http.get('api/nav/' + category + '.json',{})
+            .success(function(data) {
+                deferred.resolve(data.data);
+            }).error(function(data) {
+                deferred.reject(data);
+            });
+
+        return deferred.promise;
+    }
+}
+
+export default Service;

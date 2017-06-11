@@ -1,0 +1,20 @@
+{
+  "resultCode": "0",
+  "resultMsg": "success",
+  "data": {
+    "records": [{
+      "link": "",
+      "name": "演示页面",
+      "icon": "html5",
+      "children": [{
+        "link": "#/showcase02/layout03",
+        "name": "演示页面1",
+        "icon": "code"
+      }, {
+        "link": "#/showcase02/layout04",
+        "name": "演示页面2",
+        "icon": "th"
+      }]
+    }]
+  }
+}

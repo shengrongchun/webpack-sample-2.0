@@ -1,0 +1,48 @@
+{
+    "resultStatus": "success",
+    "page": {
+        "totalItems": 25,
+        "currentPage": 1
+    },
+    "records": [{
+        "index": 1,
+        "nameCN": 56,
+        "nameEN": 27,
+        "mu": 17.4695,
+        "ke": "Robyn",
+        "shu": "Hess",
+        "fenbu": "Leroy Hall"
+    }, {
+        "index": 2,
+        "nameCN": 56,
+        "nameEN": 27,
+        "mu": 17.4695,
+        "ke": "Robyn",
+        "shu": "Hess",
+        "fenbu": "Leroy Hall"
+    }, {
+        "index": 3,
+        "nameCN": 56,
+        "nameEN": 27,
+        "mu": 17.4695,
+        "ke": "Robyn",
+        "shu": "Hess",
+        "fenbu": "Leroy Hall"
+    }, {
+        "index": 4,
+        "nameCN": 56,
+        "nameEN": 27,
+        "mu": 17.4695,
+        "ke": "Robyn",
+        "shu": "Hess",
+        "fenbu": "Leroy Hall"
+    }, {
+        "index": 5,
+        "nameCN": 56,
+        "nameEN": 27,
+        "mu": 17.4695,
+        "ke": "Robyn",
+        "shu": "Hess",
+        "fenbu": "Leroy Hall"
+    }]
+}

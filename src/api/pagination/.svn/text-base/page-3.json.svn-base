@@ -1,0 +1,58 @@
+{
+    "resultStatus": "success",
+    "page": {
+        "totalItems": 25,
+        "currentPage": 3
+    },
+    "records": [{
+        "index": 1,
+        "index_start_at": 56,
+        "integer": 7,
+        "float": 17.7701,
+        "name": "Chris",
+        "surname": "Holmes",
+        "fullname": "Joann Honeycutt",
+        "email": "stanley@rubin.py",
+        "bool": true
+    }, {
+        "index": 2,
+        "index_start_at": 57,
+        "integer": 20,
+        "float": 18.7111,
+        "name": "Louis",
+        "surname": "Harris",
+        "fullname": "Benjamin Scott",
+        "email": "ann@cash.net",
+        "bool": false
+    }, {
+        "index": 3,
+        "index_start_at": 58,
+        "integer": 24,
+        "float": 19.2666,
+        "name": "Tammy",
+        "surname": "Merritt",
+        "fullname": "Lorraine Choi",
+        "email": "shannon@chandler.bn",
+        "bool": true
+    }, {
+        "index": 4,
+        "index_start_at": 59,
+        "integer": 47,
+        "float": 15.0116,
+        "name": "Pauline",
+        "surname": "Harvey",
+        "fullname": "Allen Hensley",
+        "email": "stephanie@burnett.ca",
+        "bool": false
+    }, {
+        "index": 5,
+        "index_start_at": 60,
+        "integer": 24,
+        "float": 15.545,
+        "name": "Carrie",
+        "surname": "Hayes",
+        "fullname": "Julia Shapiro",
+        "email": "sarah@barrett.eh",
+        "bool": true
+    }]
+}

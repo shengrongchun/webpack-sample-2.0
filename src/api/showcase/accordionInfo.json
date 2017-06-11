@@ -1,0 +1,20 @@
+{
+    "resultCode": "0",
+    "resultMsg": "success",
+    "data": [{
+        "image": "https://assets.imgix.net/examples/blueberries.jpg?auto=format&fit=crop&h=580&ixjsv=1.2.0&q=60&w=1140",
+        "text": "Blueberries"
+    }, {
+        "image": "https://assets.imgix.net/examples/clownfish.jpg?auto=format&fit=crop&h=580&ixjsv=1.2.0&q=60&w=1140",
+        "text": "Clownfish"
+    }, {
+        "image": "https://assets.imgix.net/examples/puffins.jpg?auto=format&fit=crop&h=580&ixjsv=1.2.0&q=60&w=1140",
+        "text": "Puffins"
+    }, {
+        "image": "https://assets.imgix.net/examples/redleaf.jpg?auto=format&fit=crop&h=580&ixjsv=1.2.0&q=60&w=1140",
+        "text": "Redleaf"
+    }, {
+        "image": "https://assets.imgix.net/examples/butterfly.jpg?auto=format&fit=crop&h=580&ixjsv=1.2.0&q=60&w=1140",
+        "text": "Butterfly"
+    }]
+}

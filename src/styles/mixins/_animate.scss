@@ -1,0 +1,28 @@
+@mixin transition($target:all, $duration:0.2s, $easing:cubic-bezier(.78,.14,.15,.86), $delay: 0s) {
+    -webkit-transition: $target $duration $easing $delay;
+    -moz-transition: $target $duration $easing $delay;
+    transition: $target $duration $easing $delay;
+}
+
+@mixin translate($x: 0, $y: 0) {
+    -webkit-transform: translate($x, $y);
+    -moz-transform: translate($x, $y);
+    transform: translate($x, $y);
+}
+
+@mixin animate($duration: 0.5s) {
+    -webkit-animation-duration: $duration;
+    -moz-animation-duration: $duration;
+    animation-duration: $duration;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@mixin keyframes($name) {
+    @-moz-keyframes #{$name} { @content; }
+    @-webkit-keyframes #{$name} { @content; }
+    @-o-keyframes #{$name} { @content; }
+    @-ms-keyframes #{$name} { @content; }
+    @keyframes #{$name} { @content; }
+}

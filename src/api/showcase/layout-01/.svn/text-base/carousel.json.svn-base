@@ -1,0 +1,26 @@
+{
+    "resultStatus": "success",
+    "page": {
+        "totalItems": 6,
+        "currentPage": 1
+    },
+    "records": [{
+        "image": "pics/showcase/slider/1.jpg",
+        "text": "小浣熊"
+    }, {
+        "image": "pics/showcase/slider/2.jpg",
+        "text": "灰狼"
+    }, {
+        "image": "pics/showcase/slider/3.jpg",
+        "text": "赤狐"
+    }, {
+        "image": "pics/showcase/slider/4.jpg",
+        "text": "帝企鹅"
+    }, {
+        "image": "pics/showcase/slider/5.jpg",
+        "text": "斑马"
+    }, {
+        "image": "pics/showcase/slider/6.jpg",
+        "text": "狮子"
+    }]
+}

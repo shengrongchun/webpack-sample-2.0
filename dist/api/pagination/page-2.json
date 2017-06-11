@@ -1,0 +1,58 @@
+{
+    "resultStatus": "success",
+    "page": {
+        "totalItems": 25,
+        "currentPage": 2
+    },
+    "records": [{
+        "index": 6,
+        "index_start_at": 61,
+        "integer": 11,
+        "float": 19.1052,
+        "name": "Maxine",
+        "surname": "Hinson",
+        "fullname": "Kent McPherson",
+        "email": "stacy@li.lt",
+        "bool": false
+    }, {
+        "index": 7,
+        "index_start_at": 62,
+        "integer": 31,
+        "float": 11.124,
+        "name": "Sherry",
+        "surname": "Baxter",
+        "fullname": "Vickie Olson",
+        "email": "caroline@lindsay.mo",
+        "bool": false
+    }, {
+        "index": 8,
+        "index_start_at": 63,
+        "integer": 29,
+        "float": 13.3475,
+        "name": "Eddie",
+        "surname": "Koch",
+        "fullname": "Florence Moore",
+        "email": "wendy@carlton.gh",
+        "bool": false
+    }, {
+        "index": 9,
+        "index_start_at": 64,
+        "integer": 19,
+        "float": 15.7833,
+        "name": "Lillian",
+        "surname": "Dunn",
+        "fullname": "Bob Palmer",
+        "email": "annie@may.tg",
+        "bool": true
+    }, {
+        "index": 10,
+        "index_start_at": 65,
+        "integer": 5,
+        "float": 17.5025,
+        "name": "Joel",
+        "surname": "Robinson",
+        "fullname": "Neal Harris",
+        "email": "jennifer@dolan.ls",
+        "bool": false
+    }]
+}

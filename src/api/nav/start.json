@@ -1,0 +1,19 @@
+{
+    "resultCode": "0",
+    "resultMsg": "success",
+    "data": {
+        "records": [{
+            "link": "#/start",
+            "name": "开始使用PASP UI",
+            "icon": "paper-plane"
+        }, {
+            "link": "#/start/simple-page",
+            "name": "创建一个简单页面",
+            "icon": "file-code-o"
+        }, {
+            "link": "#/start/webpack",
+            "name": "使用webpack创建项目",
+            "icon": "cube"
+        }]
+    }
+}

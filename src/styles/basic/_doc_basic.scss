@@ -1,0 +1,107 @@
+@import '../utils/variables';
+@import '../mixins/animate';
+
+body {
+    background: $body-bg;
+    color: $body-color;
+    font-family: $font-family;
+}
+
+a:focus {
+    outline:none;
+}
+
+/* 左侧导航栏 */
+.sidebar-left {
+    position: fixed;
+    top: 60px;
+    z-index: 20;
+    background: $sidebar-bg;
+    width: 250px;
+    min-height: 100%;
+    box-shadow: 2px 0 3px rgba(0, 0, 0, 0.05);
+
+    nav {
+        width: 250px; 
+    }
+
+}
+
+/* 主容器 */
+.container-fulid {
+    margin-left: 250px;
+    color: $body-color;
+
+    .container-inner {
+        padding: 0 35px;
+        padding-top: 60px;
+        
+        /* 示例 */
+        .example {
+            border: 1px solid #eee;
+            padding: 10px 20px;
+
+            &:before {
+                content: "示例:";
+                display: block;
+                font-color: #ccc;
+                border-bottom: 1px solid #eee;
+                margin: 0 10px 10px 10px;
+                padding: 0 0 10px 0;
+            }      
+        }
+        
+
+    
+
+
+
+
+
+        /* container header */
+        .page-header {
+            border-bottom: 1px solid $page-header-border;
+            h2 {
+                margin: 0;
+                padding: 0;
+                float: left;
+                color: $page-header-color;
+                line-height: 41px;
+
+                i {
+                    border: 2px solid $page-header-icon-color;
+                    color: $page-header-icon-color;
+                    font-size: 20px;
+                    width: 44px;
+                    height: 44px;
+                    line-height: 39px;
+                    float: left;
+                    margin-right: 20px;
+                    text-align: center;
+                    border-radius: 100px
+                }
+            }
+            .breadcrumb {
+                color: $page-header-color;
+                float: right;
+                background: transparent;
+                margin: 10px 0 0;
+
+                a {
+                    color: $page-header-breadcrumb-color;
+                }
+            }
+        }  
+        
+
+
+
+
+
+    }
+
+}
+
+
+
+

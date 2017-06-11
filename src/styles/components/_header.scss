@@ -1,0 +1,74 @@
+/* 顶部头部 */
+.header-top {
+    $nav-border-color: #367cc9;
+
+    background: $header-bg;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    
+    /* 右边的nav 样式 */
+    .nav {
+        color: $header-color;
+        > li > a {
+            color: $header-color;
+            padding: 0 20px;
+            height: 60px;
+            line-height: 60px;
+            border-right: 1px solid $nav-border-color;
+            border-top: none;
+            border-bottom: none;
+        }
+        > li > a:first {
+            border-left: 1px solid $nav-border-color;
+        }
+        > li > a:hover, > li > a:focus{
+            background: #2a6ab1;
+            color: $white;
+        }
+        // > li.actived > a {
+        //     background: #3379c6;
+        //     color: $white;
+        // }
+        
+    }
+    .navbar-right {
+        margin-right: 10px;
+    }
+
+    .navbar-left {
+        margin-left: 20px;
+    }
+    
+}
+
+
+
+/* 左侧Logo */
+.branding {
+    background: $header-branding-bg;
+    height: 60px;
+    width: 250px;
+    float: left;
+
+    a {
+        display: block;
+        margin: 8px 0 0 20px;
+        background: url('../images/logo.png') no-repeat;
+        text-indent: -999em;
+        width: 169px;
+        height: 45px;
+    }
+
+    // label {
+    //     height: 60px;
+    //     line-height: 60px;
+    //     display: block;
+    //     font-size: 20px;
+    //     color: $white;
+    //     padding-left: 20px;
+    // }
+}

@@ -1,0 +1,17 @@
+{
+    "resultStatus": "success",
+    "page": {
+        "totalItems": 3,
+        "currentPage": 1
+    },
+    "records": [{
+        "id": 21,
+        "title": "node2.1"
+    }, {
+        "id": 22,
+        "title": "node2.2"
+    }, {
+        "id": 23,
+        "title": "node2.3"
+    }]
+}

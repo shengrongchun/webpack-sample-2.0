@@ -1,0 +1,58 @@
+{
+    "resultStatus": "success",
+    "page": {
+        "totalItems": 25,
+        "currentPage": 5
+    },
+    "records": [{
+        "index": 1,
+        "index_start_at": 56,
+        "integer": 5,
+        "float": 12.9091,
+        "name": "Jim",
+        "surname": "Webb",
+        "fullname": "Bob Kelley",
+        "email": "lillian@nichols.ck",
+        "bool": false
+    }, {
+        "index": 2,
+        "index_start_at": 57,
+        "integer": 37,
+        "float": 17.9976,
+        "name": "Edgar",
+        "surname": "Whitehead",
+        "fullname": "Dawn McLeod",
+        "email": "peggy@black.es",
+        "bool": false
+    }, {
+        "index": 3,
+        "index_start_at": 58,
+        "integer": 22,
+        "float": 15.6872,
+        "name": "Judith",
+        "surname": "Coley",
+        "fullname": "Clarence Ferrell",
+        "email": "sue@atkins.gw",
+        "bool": true
+    }, {
+        "index": 4,
+        "index_start_at": 59,
+        "integer": 19,
+        "float": 15.9003,
+        "name": "Lloyd",
+        "surname": "Palmer",
+        "fullname": "Kyle Woodard",
+        "email": "malcolm@warren.re",
+        "bool": false
+    }, {
+        "index": 5,
+        "index_start_at": 60,
+        "integer": 32,
+        "float": 14.0412,
+        "name": "Marian",
+        "surname": "Lucas",
+        "fullname": "Gretchen Branch",
+        "email": "meredith@love.bl",
+        "bool": false
+    }]
+}

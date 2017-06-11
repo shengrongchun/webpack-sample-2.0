@@ -1,0 +1,77 @@
+@charset "UTF-8";
+body {
+  background: #f2f2f2;
+  color: #666666;
+  font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei"; }
+
+a:focus {
+  outline: none; }
+
+/* 左侧导航栏 */
+.sidebar-left {
+  position: fixed;
+  top: 60px;
+  z-index: 20;
+  background: #ffffff;
+  width: 250px;
+  min-height: 100%;
+  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.05); }
+  .sidebar-left nav {
+    width: 250px; }
+
+/* 主容器 */
+.container-fulid {
+  margin-left: 250px;
+  color: #666666; }
+  .container-fulid .container-inner {
+    padding: 0 35px;
+    padding-top: 60px;
+    /* 示例 */
+    /* container header */ }
+    .container-fulid .container-inner .example {
+      border: 1px solid #eee;
+      padding: 10px 20px; }
+      .container-fulid .container-inner .example:before {
+        content: "\793A\4F8B:";
+        display: block;
+        font-color: #ccc;
+        border-bottom: 1px solid #eee;
+        margin: 0 10px 10px 10px;
+        padding: 0 0 10px 0; }
+    .container-fulid .container-inner .page-header {
+      border-bottom: 1px solid #e5e6e9; }
+      .container-fulid .container-inner .page-header h2 {
+        margin: 0;
+        padding: 0;
+        float: left;
+        color: #666666;
+        line-height: 41px; }
+        .container-fulid .container-inner .page-header h2 i {
+          border: 2px solid #b2b3b4;
+          color: #b2b3b4;
+          font-size: 20px;
+          width: 44px;
+          height: 44px;
+          line-height: 39px;
+          float: left;
+          margin-right: 20px;
+          text-align: center;
+          border-radius: 100px; }
+      .container-fulid .container-inner .page-header .breadcrumb {
+        color: #666666;
+        float: right;
+        background: transparent;
+        margin: 10px 0 0; }
+        .container-fulid .container-inner .page-header .breadcrumb a {
+          color: #b8b8b8; }
+@charset "UTF-8";
+.main-loginSlider-uTo7v {
+  float: left;
+  width: 660px; }
+
+/* 下面这种写法和上面一样，局部
+:local (.loginSlider) {
+    
+} */
+/* 全局写法
+:gobal (.loginSlider) {} */

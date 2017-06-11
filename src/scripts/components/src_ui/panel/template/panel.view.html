@@ -1,0 +1,6 @@
+<div class="panel panel-default" ng-hide="hidePanel">
+    <div class="panel-heading" ng-if="heading" ui-panel-transclude="heading">
+        <h3 class="panel-title">{{heading}}</h3>
+    </div>
+    <div class="panel-body" ng-transclude></div>
+</div>

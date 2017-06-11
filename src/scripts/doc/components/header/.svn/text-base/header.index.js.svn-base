@@ -1,0 +1,6 @@
+import directive from './header.directive';
+
+export default
+angular.module('pasp.ui.doc.header', [])
+       .directive('puiHeader', directive.factory)
+       .name;
