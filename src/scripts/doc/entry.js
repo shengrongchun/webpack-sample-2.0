@@ -1,7 +1,7 @@
 import '../../styles/doc_css';
 
 /*页面的加载*/
-const dependencies = ['src.ui','ui.router'];
+const dependencies = ['src.ui','ui.router','ui.bootstrap'];
 
 /*page 所有index.js引入*/
 const pageModules = require.context('./pages/', true, /\.index.js$/);

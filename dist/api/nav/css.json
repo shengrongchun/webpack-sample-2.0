@@ -7,39 +7,39 @@
             "name": "HTML 元素",
             "icon": "html5",
             "children": [{
-                "link": "#/css/button",
+                "link": "#!/css/button",
                 "name": "按钮",
                 "icon": "caret-right"
             }, {
-                "link": "#/css/code",
+                "link": "#!/css/code",
                 "name": "代码",
                 "icon": "caret-right"
             }, {
-                "link": "#/css/table",
+                "link": "#!/css/table",
                 "name": "表格",
                 "icon": "caret-right"
             }, {
-                "link": "#/css/form",
+                "link": "#!/css/form",
                 "name": "表单",
                 "icon": "caret-right"
             }, {
-                "link": "#/css/navigation",
+                "link": "#!/css/navigation",
                 "name": "导航",
                 "icon": "caret-right"
             }, {
-                "link": "#/css/list",
+                "link": "#!/css/list",
                 "name": "列表",
                 "icon": "caret-right"
             }, {
-                "link": "#/css/breadcrumb",
+                "link": "#!/css/breadcrumb",
                 "name": "面包屑",
                 "icon": "caret-right"
             }, {
-                "link": "#/css/alert",
+                "link": "#!/css/alert",
                 "name": "提示框",
                 "icon": "caret-right"
             }, {
-                "link": "#/css/image",
+                "link": "#!/css/image",
                 "name": "图片",
                 "icon": "caret-right"
             }]
@@ -48,27 +48,27 @@
             "name": "辅助类",
             "icon": "magic",
             "children": [{
-                "link": "#/css/color",
+                "link": "#!/css/color",
                 "name": "情景颜色",
                 "icon": "caret-right"
             }, {
-                "link": "#/css/clear",
+                "link": "#!/css/clear",
                 "name": "清除浮动",
                 "icon": "caret-right"
             },{
-                "link": "#/css/float",
+                "link": "#!/css/float",
                 "name": "快速浮动",
                 "icon": "caret-right"
             }, {
-                "link": "#/css/center",
+                "link": "#!/css/center",
                 "name": "内容块居中",
                 "icon": "caret-right"
             }, {
-                "link": "#/css/show-hidden",
+                "link": "#!/css/show-hidden",
                 "name": "显示或隐藏",
                 "icon": "caret-right"
             }, {
-                "link": "#/css/responsive",
+                "link": "#!/css/responsive",
                 "name": "响应式工具",
                 "icon": "caret-right"
             }]

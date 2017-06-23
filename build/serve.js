@@ -39,6 +39,9 @@ gulp.task('serve', () => {
         historyApiFallback: true,
 
 
+        publicPath: '/',
+
+
 
 
         //代理

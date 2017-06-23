@@ -54,7 +54,14 @@ const config = {
     framework_js: ['jquery','angular'],
 
     //ui 组件库集合,基于bootstrap
-    src_ui_js: ['high_light','angular-bootstrap','bootstrap_css','fontawesome_css', path.resolve(src_path+'/scripts/components', index_file)],
+    src_ui_js: [
+
+    /*高亮 start*/
+        'monokai_sublime_css',
+        'highlight.js',
+    /*高亮 end*/
+
+        'angular-bootstrap','bootstrap_css','fontawesome_css', path.resolve(src_path+'/scripts/components', index_file)],
 
     //主入口集合
     app_js: ['angular-ui-router', path.resolve(src_path+'/scripts/doc', index_file)],

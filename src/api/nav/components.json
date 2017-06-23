@@ -7,11 +7,11 @@
             "name": "容器组件",
             "icon": "inbox",
             "children": [{
-                "link": "#/components/panel",
+                "link": "#!/components/panel",
                 "name": "面板 - Panel",
                 "icon": "caret-right"
             }, {
-                "link": "#/components/tabs/1",
+                "link": "#!/components/tabs",
                 "name": "选项卡 - Tab",
                 "icon": "caret-right"
             }, {

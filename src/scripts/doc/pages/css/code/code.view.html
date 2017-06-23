@@ -1,0 +1,295 @@
+<div class="page-main">
+    <header class="page-header clearfix">
+        <h2><i class="fa fa-html5"></i>代码</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="#">CSS</a>
+            </li>
+            <li class="active">
+                <strong>代码</strong>
+            </li>
+        </ol>
+    </header>
+    <section>
+        <!--按钮-->
+        <!--内联代码-->
+        <ui-panel>
+            <ui-panel-heading><h3>1. 内联代码</h3></ui-panel-heading>
+            <p>通过 <code>&lt;code&gt;</code> 标签包裹内联样式的代码片段。</p>
+            <div class="example margin-top-30">
+                可使用<code>&lt;strong&gt;</code>标签对文字加粗
+            </div>
+            <div class="example-code">
+                <pre>
+                    <code ui-highlight class="xml">
+                        可使用<code>&amp;lt;strong&amp;gt;</code>标签对文字加粗
+                    </code>
+                </pre>
+            </div>
+        </ui-panel>
+
+        <!--用户输入-->
+        <ui-panel>
+            <ui-panel-heading><h3 class="margin-top-40">2. 用户输入</h3></ui-panel-heading>
+            <p>通过 <code>&lt;kbd&gt;</code> 标签标记用户通过键盘输入的内容。</p>
+            <div class="example margin-top-30">
+                按 <kbd>ctrl+c</kbd> 复制文本
+            </div>
+            <div class="example-code">
+                <pre>
+                    <code ui-highlight class="xml">
+                        按 <kbd>ctrl+c</kbd> 复制文本
+                    </code>
+                </pre>
+            </div>
+        </ui-panel>
+
+        <!--HTML代码块-->
+        <ui-panel>
+            <ui-panel-heading><h3>3. HTML代码块</h3></ui-panel-heading>
+            <p>在页面容器中添加指令<code>ui-syntax-highlighter</code>。多行HTML代码块可以使用 <code>&lt;pre&gt;</code> 标签。并且加上<code>name="code"</code>属性和<code>class="brush: xml"</code></p>
+            <div class="example margin-top-30">
+                <pre>
+                    <code ui-highlight class="xml">
+                        <article>
+                            <h3>标题</h3>
+                            <p>文章正文</p>
+                        </article>
+                    </code>
+                </pre>
+            </div>
+            <div class="example-code">
+                <pre>
+                    <code ui-highlight class="xml">
+                            <pre>
+                                <code ui-highlight class="xml">
+                                    <article>
+                                        <h3>标题</h3>
+                                        <p>文章正文</p>
+                                    </article>
+                                </code>
+                            </pre>
+                    </code>
+                </pre>
+            </div>
+        </ui-panel>
+
+        <!--CSS代码块-->
+        <ui-panel>
+            <ui-panel-heading><h3>4. CSS代码块</h3></ui-panel-heading>
+            <p>在页面容器中添加指令<code>ui-syntax-highlighter</code>。多行CSS代码块可以使用 <code>&lt;pre&gt;</code> 标签。并且加上<code>name="code"</code>属性和<code>class="brush: css"</code></p>
+            <div class="example margin-top-30">
+                <pre>
+                    <code ui-highlight class="css" line-num="false">
+                        .box {
+                            background: #fff;
+                            color: #000;
+                            border: 1px solid #999;
+                            margin: 10px;
+                            padding: 10px;
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="example-code">
+                <pre>
+                    <code ui-highlight class="css">
+                        <pre>
+                            <code ui-highlight class="css">
+                                .box {
+                                    background: #fff;
+                                    color: #000;
+                                    border: 1px solid #999;
+                                    margin: 10px;
+                                    padding: 10px;
+                                }
+                            </code>
+                        </pre>
+                    </code>
+                </pre>
+            </div>
+        </ui-panel>
+
+        <!--JavaScript代码块-->
+        <ui-panel>
+            <ui-panel-heading><h3>5. JavaScript代码块</h3></ui-panel-heading>
+            <p>在页面容器中添加指令<code>ui-syntax-highlighter</code>。多行JavaScript代码块可以使用 <code>&lt;pre&gt;</code> 标签。并且加上<code>name="code"</code>属性和<code>class="brush: js"</code></p>
+            <div class="example margin-top-30">
+                <pre>
+                    <code class="js" ui-highlight>
+                        var text = "Hello world!";
+                        function say() {
+                            alert(text);
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="example-code">
+                <pre>
+                    <code class="xml" ui-highlight>
+                        <pre>
+                            <code class="js" ui-highlight>
+                                var text = "Hello world!";
+                                function say() {
+                                    alert(text);
+                                }
+                            </code>
+                        </pre>
+                    </code>
+                </pre>
+            </div>
+        </ui-panel>
+
+        <!--Java代码块-->
+        <ui-panel>
+            <ui-panel-heading><h3>6. Java代码块</h3></ui-panel-heading>
+            <p>多行Java代码块可以使用 <code>&lt;pre&gt;</code> 标签。并且加上<code>name="code"</code>属性和<code>class="brush: java"</code></p>
+            <div class="example margin-top-30">
+                <pre>
+                    <code class="java" ui-highlight>
+                        public class HelloWorld {
+                            public static void main(String args[]) {
+                               System.out.println("Hello World!");
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+            <div class="example-code">
+                <pre name="code" class="brush: xml">
+                    <pre name="code" class="brush: java">
+
+                        public class HelloWorld {
+                            public static void main(String args[]) {
+                                System.out.println("Hello World!");
+                            }
+                        }
+                    </pre>
+                </pre>
+            </div>
+        </ui-panel>
+
+        <!--Shell脚本块-->
+        <ui-panel>
+            <ui-panel-heading><h3>7. Shell脚本块</h3></ui-panel-heading>
+            <p>在页面容器中添加指令<code>ui-syntax-highlighter</code>。多行Shell脚本块可以使用 <code>&lt;pre&gt;</code> 标签。并且加上<code>name="code"</code>属性和<code>class="brush: bash"</code></p>
+            <div class="example margin-top-30">
+                <pre>
+                    <code class="bash" ui-highlight>
+                        Enter passphrase (empty for no passphrase):
+                        Enter same passphrase again:
+                        The key fingerprint is:
+                        The key's randomart image is:
+                        +---[RSA 2048]----+
+                        |                 |
+                        |                 |
+                        |                 |
+                        |                 |
+                        |      . So .     |
+                        |  .    +o.+  . . |
+                        |   =  =+oo.  o=..|
+                        |  E +o=*. ....BB.|
+                        | o.*=+==o  +=o+XO|
+                        +----[SHA256]-----+
+                    </code>
+                </pre>
+            </div>
+            <div class="example-code">
+                <pre name="code" class="brush: xml">
+                    <pre name="code" class="brush: bash">
+                    
+                        Enter passphrase (empty for no passphrase):
+                        Enter same passphrase again:
+                        The key fingerprint is:
+                        The key's randomart image is:
+                        +---[RSA 2048]----+
+                        |                 |
+                        |                 |
+                        |                 |
+                        |                 |
+                        |      . So .     |
+                        |  .    +o.+  . . |
+                        |   =  =+oo.  o=..|
+                        |  E +o=*. ....BB.|
+                        | o.*=+==o  +=o+XO|
+                        +----[SHA256]-----+
+                    </pre>
+                </pre>
+            </div>
+        </ui-panel>
+
+        <!--Java代码块-->
+        <ui-panel>
+            <ui-panel-heading><h3>8. 处理代码中含有特殊字符导致的显示不正常</h3></ui-panel-heading>
+            <p>使用 <code>&lt;pre&gt;</code> 标签处理一些特殊字符时会显示格式不正常，可使用<code>script</code>标签</p>
+            <div class="example-code">
+                <pre name="code" class="brush: xml">
+                    <script type="syntaxhighlighter" class="brush: java">
+                        public class HelloWorld {
+                            public static void main(String args[]) {
+                                System.out.println("Hello World!");
+                            }
+                        }
+                    </script>
+                </pre>
+            </div>
+        </ui-panel>
+
+        <!--设置代码显示风格-->
+        <ui-panel>
+            <ui-panel-heading><h3>9. 设置代码显示风格</h3></ui-panel-heading>
+            <p>使用指令属性theme设置代码显示风格。</p>
+            <p>可选风格</p>
+            <ul>
+                <li><code>dark</code>: 深色风格(默认)</li>
+                <li><code>light</code>: 浅色风格</li>
+            </ul>
+            <div class="example-code">
+                <pre name="code" class="brush: java;class-name: 'syntaxhighlighter-light'">
+                    public class HelloWorld {
+                        public static void main(String args[]) {
+                            System.out.println("Hello World!");
+                        }
+                    }
+                </pre>
+            </div>
+
+            <div class="example-code">
+                <script type="syntaxhighlighter" class="brush: xml">
+                    <div ui-syntax-highlighter theme="light">
+                        ...
+                    </div>
+                </script>
+            </div>
+        </ui-panel>
+
+        <!-- ui-syntaxHighlighter 属性 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>10. ui-syntaxHighlighter 属性</h3></ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="20%">属性名</th>
+                        <th width="20%">默认值</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>line-numbers</code></td>
+                        <td><code>true</code></td>
+                        <td>是否显示行数</td>
+                    </tr>
+                    <tr>
+                        <td><code>theme</code></td>
+                        <td><code>dark</code></td>
+                        <td>选择代码显示颜色风格，可选值<code>dark</code>, <code>light</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+    </section>
+</div>

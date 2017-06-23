@@ -1,0 +1,853 @@
+<div class="page-main" ui-syntax-highlighter>
+    <header class="page-header clearfix">
+        <h2><i class="fa fa-puzzle-piece"></i>选项卡</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="#">Web组件</a>
+            </li>
+            <li class="active">
+                <strong>选项卡</strong>
+            </li>
+        </ol>
+    </header>
+    
+    <section>
+        <!-- 静态内容 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading>
+                <h3>1. 静态内容</h3>
+            </ui-panel-heading>
+            <p>下面例子演示了静态呈现选项卡的方式。</p>
+        </ui-panel>
+        <ui-panel class="no-padding">
+
+            <ui-tabset active="activePill"  type="pills">
+                <ui-tab index="0" heading="Static title">Static content</ui-tab>
+                <ui-tab index="1" select="alertMe()">
+                  <ui-tab-heading>
+                    <i class="glyphicon glyphicon-bell"></i> Alert!
+                  </ui-tab-heading>
+                  I've got an HTML heading, and a select callback. Pretty cool!
+                </ui-tab>
+            </ui-tabset>
+
+        </ui-panel>
+        <ui-panel panel-toolbar="false">
+            <div class="example-code">
+                <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                    <ui-tabset>
+                        <ui-tab>
+                            <ui-tab-heading>首页</ui-tab-heading>
+                            <p>...</p>
+                        </ui-tab>
+                        <ui-tab>
+                            <ui-tab-heading>帮助信息</ui-tab-heading>
+                            <p>...</p>
+                        </ui-tab>
+                        <ui-tab>
+                            <ui-tab-heading>关于</ui-tab-heading>
+                            <p>...</p>
+                        </ui-tab>
+                    </ui-tabset>
+                ]]></script>
+            </div>
+        </ui-panel>
+
+        <!-- 动态内容 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading>
+                <h3>2. 动态内容</h3>
+            </ui-panel-heading>
+            <p>使用AngularJS为选项卡绑定数据。通过<code>ui-tabset</code>中的属性<code>active-id</code>和<code>ui-tab</code>中的属性<code>tab-id</code>匹配来默认激活指定的选项卡。</p>
+            <p>下面例子演示了动态呈现选项卡的方式。</p>
+        </ui-panel>
+        <ui-panel class="no-padding" panel-toolbar="false">
+            <ui-tabset active-id="activeId">
+                <ui-tab tab-id="{{tab.id}}" ng-repeat="tab in tabList" active="tab.active" select="selectTab(tab)" deselect="deselectTab(tab)">
+                    <ui-tab-heading>{{tab.heading}} <button class="btn btn-link btn-xs" ng-click="removeTab(tab)"><i class="fa fa-times"></i></button></ui-tab-heading>
+                    <p>{{tab.content}}</p>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+        <div class="margin-bottom-20">
+            <button class="btn btn-primary" type="button" ng-click="insertTab()">添加新的选项卡</button>
+        </div>
+        <ui-panel class="no-padding" panel-toolbar="false">
+            <ui-tabset>
+                <ui-tab>
+                    <ui-tab-heading>HTML</ui-tab-heading>
+                    <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                        <ui-tabset active-id="activeId">
+                            <ui-tab tab-id="{{tab.id}}" ng-repeat="tab in tabList" active="tab.active" select="selectTab(tab)" deselect="deselectTab(tab)">
+                                <ui-tab-heading>{{tab.heading}} <button class="btn btn-link btn-xs" ng-click="removeTab(tab)"><i class="fa fa-times"></i></button></ui-tab-heading>
+                                <p>{{tab.content}}</p>
+                            </ui-tab>
+                        </ui-tabset>
+                    ]]></script>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>Controller</ui-tab-heading>
+                    <pre name="code" class="brush: jscript">
+                        // 默认选中的tab id
+                        $scope.activeId = 'about';
+
+                        // 选项卡列表
+                        $scope.tabList = [{
+                            'id': 'home',
+                            'heading': '首页',
+                            'content': 'Volutpat montes per est. Sociosqu orci pharetra. Eros fermentum cursus. Orci cras justo aliquet tristique. Sed. Leo erat morbi, quam rutrum.'
+                        }, {
+                            'id': 'help',
+                            'heading': '帮助信息',
+                            'content': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'
+                        }, {
+                            'id': 'about',
+                            'heading': '关于',
+                            'content': 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.'
+                        }];
+
+                        // 插入新的选项卡
+                        $scope.insertTab = function() {
+                            $scope.tabList.push({
+                                'id': 'info',
+                                'heading': '条款信息',
+                                'content': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                                'active': true
+                            });
+                        };
+
+                        // 删除选项卡
+                        $scope.removeTab = function(tab) {
+                            var index = $scope.tabList.indexOf(tab);
+                            $scope.tabList.splice(index, 1);
+                        }
+
+                        // 当选中选项卡触发回调函数
+                        $scope.selectTab = function(tab) {
+                            console.log('打开选项卡:' + tab.heading);
+                        }
+
+                        // 当取消选中选项卡触发回调函数
+                        $scope.deselectTab = function(tab) {
+                            console.log('取消选中选项卡:' + tab.heading);
+                        }
+                    </pre>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+
+        <!-- 路由选项卡 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading>
+                <h3>3. 路由选项卡</h3>
+            </ui-panel-heading>
+            <p>通过路由切换不同的选项卡，选项卡的内容根据路由中对应的模版动态加载显示。使用步骤如下：</p>
+            <ul>
+                <li>使用<code>ui-router</code>配置路由，添加页面子路由</li>
+                <li>使用<code>ui-tabset</code>添加选项卡组件，并添加<code>class="route-tabs"</code></li>
+                <li>在<code>ui-tabset</code>下一个相邻节点添加<code>ui-view</code>标签</li>
+                <li>在<code>controller</code>中添加"添加选项卡", "移除选项卡", "路由跳转"等方法</li>
+            </ul>
+            <p>下面例子演示了动态呈现选项卡的方式。</p>
+        </ui-panel>
+        <section class="router-tabs-demo">
+            <!--导航-->
+            <div class="navigation-verticle">
+                <ul class="nav">
+                    <li ng-repeat="router in routers" ng-class="{'actived' : router.route == currentRouter}"><a ui-sref="{{router.route}}" ng-click="addRouteTab($event)">{{router.title}}</a></li>
+                </ul>
+            </div>
+            <!--选项卡-->
+            <ui-panel class="no-padding router-tabs-panel">
+                <ui-tabset class="route-tabs">
+                    <ui-tab ng-repeat="tab in defaultRouteTabs" ng-dblclick="removeRouteTab(tab)" select="routeGo(tab)" heading="{{tab.title}}" active="tab.active">
+                        <ui-tab-heading>{{tab.title}} <button class="btn btn-link btn-xs" ui-tooltip-append-to-body="true" ui-tooltip="关闭" ng-click="removeRouteTab(tab)"><i class="fa fa-times"></i></button></ui-tab-heading>
+                    </ui-tab>
+                </ui-tabset>
+                <ui-view></ui-view>
+            </ui-panel>
+        </section>
+        <ui-panel class="no-padding" panel-toolbar="false">
+            <ui-tabset>
+                <ui-tab>
+                    <ui-tab-heading>HTML</ui-tab-heading>
+                    <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                        <!--导航-->
+                        <div class="navigation-verticle">
+                            <ul class="nav">
+                                <li ng-repeat="router in routers" ng-class="{'actived' : router.route == currentRouter}"><a ui-sref="{{router.route}}" ng-click="addRouteTab($event)">{{router.title}}</a></li>
+                            </ul>
+                        </div>
+                        <!--选项卡-->
+                        <ui-panel class="no-padding router-tabs-panel">
+                            <ui-tabset class="route-tabs">
+                                <ui-tab ng-repeat="tab in defaultRouteTabs" ng-dblclick="removeRouteTab(tab)" select="routeGo(tab)" heading="{{tab.title}}" active="tab.active">
+                                    <ui-tab-heading>{{tab.title}} <button class="btn btn-link btn-xs" ui-tooltip-append-to-body="true" ui-tooltip="关闭" ng-click="removeRouteTab(tab)"><i class="fa fa-times"></i></button></ui-tab-heading>
+                                </ui-tab>
+                            </ui-tabset>
+                            <ui-view></ui-view>
+                        </ui-panel>
+                    ]]></script>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>Controller</ui-tab-heading>
+                    <pre name="code" class="brush: jscript">
+                        // 监听路由地址变化
+                        $scope.$watch(function() {
+                            return $state.current.name;
+                        }, function() {
+                            $scope.currentRouter = $state.current.name;
+                        });
+
+                        // 导航路由
+                        $scope.routers = [
+                            { title:'表格页面', route: 'components/tabs.tab1' },
+                            { title:'表单页面', route: 'components/tabs.tab2' },
+                            { title:'富编辑器页面', route: 'components/tabs.tab3' },
+                            { title:'源代码页面', route: 'components/tabs.tab4' }
+                        ];
+
+                        // 默认显示的Tabs
+                        $scope.defaultRouteTabs = [
+                            { title:'表格页面', route: 'components/tabs.tab1' }
+                        ];
+
+                        // 路由跳转
+                        $scope.routeGo = function(tab) {
+                            $state.go(tab.route, tab.params);
+                        };
+
+                        // 移除选项卡
+                        $scope.removeRouteTab = function(tab) {
+                            var _tab = _.findWhere($scope.tabs, {
+                                route: tab.route
+                            });
+                            var index = $scope.tabs.indexOf(_tab);
+                            $scope.tabs.splice(index, 1);
+                        };
+
+                        // 添加选项卡
+                        $scope.addRouteTab = function(event) {
+                            var route = angular.element(event.target).attr('ui-sref');
+                            angular.forEach($scope.defaultRouteTabs, function(tab) {
+                                tab.active = false;
+                            });
+
+                            var _tab = _.findWhere($scope.defaultRouteTabs, {
+                                route: route
+                            });
+
+                            if(!_tab) {
+                                $scope.defaultRouteTabs.push({
+                                    title: event.target.innerHTML,
+                                    route: route,
+                                    active: true
+                                });
+                            } else {
+                                _tab.active = true;
+                            }
+                        };
+                    </pre>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>Router Config</ui-tab-heading>
+                    <pre name="code" class="brush: jscript">
+                        $stateProvider
+                            .state('components/tabs', { //components - tabs
+                                url: "/components/tabs",
+                                templateUrl: 'scripts/demo/pages/components/tabs/tabs.view.html',
+                                controller: 'ComponentsTabsCtrl'
+                            })
+                            .state('components/tabs.tab1', {
+                                url: "/1",
+                                templateUrl: 'scripts/demo/pages/components/tabs/tabs-1.view.html'
+                            })
+                            .state('components/tabs.tab2', {
+                                url: "/2",
+                                templateUrl: 'scripts/demo/pages/components/tabs/tabs-2.view.html'
+                            })
+                            .state('components/tabs.tab3', {
+                                url: "/3",
+                                templateUrl: 'scripts/demo/pages/components/tabs/tabs-3.view.html'
+                            })
+                            .state('components/tabs.tab4', {
+                                url: "/4",
+                                templateUrl: 'scripts/demo/pages/components/tabs/tabs-4.view.html'
+                            });
+                    </pre>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+
+
+        <!-- 导航风格选项卡 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading>
+                <h3>4. 导航风格选项卡</h3>
+            </ui-panel-heading>
+            <p>为<code>ui-tabset</code>添加<code>type="navigation"</code>, 可将风格设为导航式。</p>
+            <hr />
+            <ui-tabset type="navigation">
+                <ui-tab>
+                    <ui-tab-heading>首页</ui-tab-heading>
+                    <p>Volutpat montes per est. Sociosqu orci pharetra. Eros fermentum cursus. Orci cras justo aliquet tristique. Sed. Leo erat morbi, quam rutrum.</p>
+                    <p>Potenti magna velit eleifend tempor dictum id class. Venenatis sociosqu donec inceptos potenti nisi. Arcu nam viverra lectus odio blandit nullam parturient et dis pulvinar sit, scelerisque, pharetra nulla. Vehicula.</p>
+                    <p>Vestibulum vivamus mi. Hac fermentum nonummy congue dis feugiat inceptos. Cras per fermentum nonummy, phasellus nostra sagittis pulvinar velit conubia maecenas eleifend senectus rhoncus, parturient sodales ut taciti varius ut. Lorem nisi eu nam platea Nulla lacus rutrum aptent. Magna pharetra malesuada adipiscing ad sociosqu, nam. Aptent, ligula congue.</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>帮助信息</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>关于我们</ui-tab-heading>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+                    <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>演示文档</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>相关资源</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>配置中心</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+            </ui-tabset>
+            <div class="example-code">
+                <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                    <ui-tabset type="navigation">
+                        <ui-tab>
+                            <ui-tab-heading>首页</ui-tab-heading>
+                            <p>...</p>
+                        </ui-tab>
+                        <ui-tab>
+                            <ui-tab-heading>帮助信息</ui-tab-heading>
+                            <p>...</p>
+                        </ui-tab>
+                        <ui-tab>
+                            <ui-tab-heading>关于</ui-tab-heading>
+                            <p>...</p>
+                        </ui-tab>
+                    </ui-tabset>
+                ]]></script>
+            </div>
+
+            <p class="margin-top-30">另提供更多导航样式可供选择。<br />导航样式2:<code>type="navigation-2"</code></p>
+            <hr />
+            <ui-tabset type="navigation-2">
+                <ui-tab>
+                    <ui-tab-heading>首页</ui-tab-heading>
+                    <p>Volutpat montes per est. Sociosqu orci pharetra. Eros fermentum cursus. Orci cras justo aliquet tristique. Sed. Leo erat morbi, quam rutrum.</p>
+                    <p>Potenti magna velit eleifend tempor dictum id class. Venenatis sociosqu donec inceptos potenti nisi. Arcu nam viverra lectus odio blandit nullam parturient et dis pulvinar sit, scelerisque, pharetra nulla. Vehicula.</p>
+                    <p>Vestibulum vivamus mi. Hac fermentum nonummy congue dis feugiat inceptos. Cras per fermentum nonummy, phasellus nostra sagittis pulvinar velit conubia maecenas eleifend senectus rhoncus, parturient sodales ut taciti varius ut. Lorem nisi eu nam platea Nulla lacus rutrum aptent. Magna pharetra malesuada adipiscing ad sociosqu, nam. Aptent, ligula congue.</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>帮助信息</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>关于我们</ui-tab-heading>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+                    <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>演示文档</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>相关资源</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>配置中心</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+            </ui-tabset>
+
+            <p class="margin-top-30">导航样式3: <code>type="navigation-3"</code></p>
+            <hr />
+            <ui-tabset type="navigation-3">
+                <ui-tab>
+                    <ui-tab-heading>首页</ui-tab-heading>
+                    <p>Volutpat montes per est. Sociosqu orci pharetra. Eros fermentum cursus. Orci cras justo aliquet tristique. Sed. Leo erat morbi, quam rutrum.</p>
+                    <p>Potenti magna velit eleifend tempor dictum id class. Venenatis sociosqu donec inceptos potenti nisi. Arcu nam viverra lectus odio blandit nullam parturient et dis pulvinar sit, scelerisque, pharetra nulla. Vehicula.</p>
+                    <p>Vestibulum vivamus mi. Hac fermentum nonummy congue dis feugiat inceptos. Cras per fermentum nonummy, phasellus nostra sagittis pulvinar velit conubia maecenas eleifend senectus rhoncus, parturient sodales ut taciti varius ut. Lorem nisi eu nam platea Nulla lacus rutrum aptent. Magna pharetra malesuada adipiscing ad sociosqu, nam. Aptent, ligula congue.</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>帮助信息</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>关于我们</ui-tab-heading>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+                    <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>演示文档</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>相关资源</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>配置中心</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+            </ui-tabset>
+
+            <p class="margin-top-30">导航样式4: <code>type="navigation-4"</code></p>
+            <hr />
+            <ui-tabset type="navigation-4">
+                <ui-tab>
+                    <ui-tab-heading>首页</ui-tab-heading>
+                    <p>Volutpat montes per est. Sociosqu orci pharetra. Eros fermentum cursus. Orci cras justo aliquet tristique. Sed. Leo erat morbi, quam rutrum.</p>
+                    <p>Potenti magna velit eleifend tempor dictum id class. Venenatis sociosqu donec inceptos potenti nisi. Arcu nam viverra lectus odio blandit nullam parturient et dis pulvinar sit, scelerisque, pharetra nulla. Vehicula.</p>
+                    <p>Vestibulum vivamus mi. Hac fermentum nonummy congue dis feugiat inceptos. Cras per fermentum nonummy, phasellus nostra sagittis pulvinar velit conubia maecenas eleifend senectus rhoncus, parturient sodales ut taciti varius ut. Lorem nisi eu nam platea Nulla lacus rutrum aptent. Magna pharetra malesuada adipiscing ad sociosqu, nam. Aptent, ligula congue.</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>帮助信息</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>关于我们</ui-tab-heading>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+                    <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>演示文档</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>相关资源</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>配置中心</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+            </ui-tabset>
+
+            <p class="margin-top-30">导航样式5: <code>type="navigation-5"</code></p>
+            <hr />
+            <ui-tabset type="navigation-5">
+                <ui-tab>
+                    <ui-tab-heading>首页</ui-tab-heading>
+                    <p>Volutpat montes per est. Sociosqu orci pharetra. Eros fermentum cursus. Orci cras justo aliquet tristique. Sed. Leo erat morbi, quam rutrum.</p>
+                    <p>Potenti magna velit eleifend tempor dictum id class. Venenatis sociosqu donec inceptos potenti nisi. Arcu nam viverra lectus odio blandit nullam parturient et dis pulvinar sit, scelerisque, pharetra nulla. Vehicula.</p>
+                    <p>Vestibulum vivamus mi. Hac fermentum nonummy congue dis feugiat inceptos. Cras per fermentum nonummy, phasellus nostra sagittis pulvinar velit conubia maecenas eleifend senectus rhoncus, parturient sodales ut taciti varius ut. Lorem nisi eu nam platea Nulla lacus rutrum aptent. Magna pharetra malesuada adipiscing ad sociosqu, nam. Aptent, ligula congue.</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>帮助信息</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>关于我们</ui-tab-heading>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+                    <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>相关资源</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>演示文档</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>配置中心</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+            </ui-tabset>
+
+            <p class="margin-top-30">导航样式6: <code>type="navigation-6"</code></p>
+            <div class="note">该样式与<code>panel</code>组件结合使用时，会包含-41px的向上移动，因此需要在实际使用中在<code>panel</code>组件上手动添加外边距。</div>
+            
+            <ui-panel class="no-padding margin-top-50">
+                <ui-tabset type="navigation-6">
+                    <ui-tab>
+                        <ui-tab-heading>首页</ui-tab-heading>
+                        <p>Volutpat montes per est. Sociosqu orci pharetra. Eros fermentum cursus. Orci cras justo aliquet tristique. Sed. Leo erat morbi, quam rutrum.</p>
+                        <p>Potenti magna velit eleifend tempor dictum id class. Venenatis sociosqu donec inceptos potenti nisi. Arcu nam viverra lectus odio blandit nullam parturient et dis pulvinar sit, scelerisque, pharetra nulla. Vehicula.</p>
+                        <p>Vestibulum vivamus mi. Hac fermentum nonummy congue dis feugiat inceptos. Cras per fermentum nonummy, phasellus nostra sagittis pulvinar velit conubia maecenas eleifend senectus rhoncus, parturient sodales ut taciti varius ut. Lorem nisi eu nam platea Nulla lacus rutrum aptent. Magna pharetra malesuada adipiscing ad sociosqu, nam. Aptent, ligula congue.</p>
+                    </ui-tab>
+                    <ui-tab>
+                        <ui-tab-heading>帮助信息</ui-tab-heading>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                    </ui-tab>
+                    <ui-tab>
+                        <ui-tab-heading>关于我们</ui-tab-heading>
+                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+                        <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+                    </ui-tab>
+                    <ui-tab>
+                        <ui-tab-heading>演示文档</ui-tab-heading>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                    </ui-tab>
+                    <ui-tab>
+                        <ui-tab-heading>相关资源</ui-tab-heading>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                    </ui-tab>
+                    <ui-tab>
+                        <ui-tab-heading>配置中心</ui-tab-heading>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                    </ui-tab>
+                </ui-tabset>
+            </ui-panel>
+        </ui-panel>
+
+
+        <!-- 竖形风格选项卡 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading>
+                <h3>5. 竖形风格选项卡</h3>
+            </ui-panel-heading>
+            <p>为<code>ui-tabset</code>添加<code>type="vertical"</code>, 可将风格设为竖形。</p>
+        </ui-panel>
+
+        <ui-panel>
+            <ui-tabset type="vertical">
+                <ui-tab>
+                    <ui-tab-heading>首页</ui-tab-heading>
+                    <p>Volutpat montes per est. Sociosqu orci pharetra. Eros fermentum cursus. Orci cras justo aliquet tristique. Sed. Leo erat morbi, quam rutrum.</p>
+                    <p>Potenti magna velit eleifend tempor dictum id class. Venenatis sociosqu donec inceptos potenti nisi. Arcu nam viverra lectus odio blandit nullam parturient et dis pulvinar sit, scelerisque, pharetra nulla. Vehicula.</p>
+                    <p>Vestibulum vivamus mi. Hac fermentum nonummy congue dis feugiat inceptos. Cras per fermentum nonummy, phasellus nostra sagittis pulvinar velit conubia maecenas eleifend senectus rhoncus, parturient sodales ut taciti varius ut. Lorem nisi eu nam platea Nulla lacus rutrum aptent. Magna pharetra malesuada adipiscing ad sociosqu, nam. Aptent, ligula congue.</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>帮助信息</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>关于我们</ui-tab-heading>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+                    <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>配置中心</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+
+        <ui-panel>
+            <p>另提供更多竖形样式可供选择。竖形样式2:<code>type="vertical-2"</code></p>
+            <hr />
+            <ui-tabset type="vertical-2">
+                <ui-tab>
+                    <ui-tab-heading>日</ui-tab-heading>
+                    <p>Volutpat montes per est. Sociosqu orci pharetra. Eros fermentum cursus. Orci cras justo aliquet tristique. Sed. Leo erat morbi, quam rutrum.</p>
+                    <p>Potenti magna velit eleifend tempor dictum id class. Venenatis sociosqu donec inceptos potenti nisi. Arcu nam viverra lectus odio blandit nullam parturient et dis pulvinar sit, scelerisque, pharetra nulla. Vehicula.</p>
+                    <p>Vestibulum vivamus mi. Hac fermentum nonummy congue dis feugiat inceptos. Cras per fermentum nonummy, phasellus nostra sagittis pulvinar velit conubia maecenas eleifend senectus rhoncus, parturient sodales ut taciti varius ut. Lorem nisi eu nam platea Nulla lacus rutrum aptent. Magna pharetra malesuada adipiscing ad sociosqu, nam. Aptent, ligula congue.</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>月</ui-tab-heading>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                    <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>年</ui-tab-heading>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+                    <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+
+        <!-- 设置选项卡大小 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading>
+                <h3>6. 设置选项卡大小</h3>
+            </ui-panel-heading>
+            <p>通过设置<code>size</code>属性设置选项卡大小</p>
+            <ul>
+                <li><code>xm</code>: 极小尺寸</li>
+                <li><code>sm</code>: 小尺寸</li>
+                <li><code>md</code>: 中等尺寸(默认)</li>
+                <li><code>lg</code>: 大尺寸</li>
+            </ul>
+        </ui-panel>
+        <ui-panel class="no-padding">
+            <ui-tabset size="xm">
+                <ui-tab>
+                    <ui-tab-heading>首页</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>帮助信息</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>关于</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>演示文档</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>相关资源</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>配置中心</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+        <ui-panel class="no-padding">
+            <ui-tabset size="sm">
+                <ui-tab>
+                    <ui-tab-heading>首页</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>帮助信息</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>关于</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>演示文档</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>相关资源</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>配置中心</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+        <ui-panel class="no-padding">
+            <ui-tabset>
+                <ui-tab>
+                    <ui-tab-heading>首页</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>帮助信息</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>关于</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>演示文档</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>相关资源</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>配置中心</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+        <ui-panel class="no-padding">
+            <ui-tabset size="lg">
+                <ui-tab>
+                    <ui-tab-heading>首页</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>帮助信息</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>关于</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>演示文档</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>相关资源</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>配置中心</ui-tab-heading>
+                    <p>Volutpat</p>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+        <ui-panel panel-toolbar="false">
+            <div class="example-code">
+                <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                    <ui-tabset>
+                        <ui-tab>
+                            <ui-tab-heading>首页</ui-tab-heading>
+                            <p>...</p>
+                        </ui-tab>
+                        <ui-tab>
+                            <ui-tab-heading>帮助信息</ui-tab-heading>
+                            <p>...</p>
+                        </ui-tab>
+                        <ui-tab>
+                            <ui-tab-heading>关于</ui-tab-heading>
+                            <p>...</p>
+                        </ui-tab>
+                    </ui-tabset>
+                ]]></script>
+            </div>
+        </ui-panel>
+
+        <!-- ui-tabset属性 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading>
+                <h3>7. &lt;ui-tabset&gt; 属性</h3>
+            </ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>属性</th>
+                        <th>默认值</th>
+                        <th>类型</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>vertical</code></td>
+                        <td>false</td>
+                        <td>boolean</td>
+                        <td>使选项卡按钮竖向排列</td>
+                    </tr>
+                    <tr>
+                        <td><code>justified</code></td>
+                        <td>false</td>
+                        <td>boolean</td>
+                        <td>使选项卡按钮撑满整个容器</td>
+                    </tr>
+                    <tr>
+                        <td><code>type</code></td>
+                        <td>tabs</td>
+                        <td>string</td>
+                        <td>按钮类型。可选属性: <code>tabs</code>, <code>vertical</code>, <code>vertical-2</code>, <code>navigation</code>, <code>navigation-2</code>, <code>navigation-3</code>, <code>navigation-4</code>, <code>navigation-5</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>size</code></td>
+                        <td>md</td>
+                        <td>string</td>
+                        <td>设置选项卡尺寸，可选值: <code>xm</code>, <code>sm</code>, <code>md</code>, <code>lg</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>active-id</code></td>
+                        <td>null</td>
+                        <td>expression</td>
+                        <td>默认显示选项卡的id<code>ui-tab</code>中<code>tab-id</code>的匹配来指定默认显示的选项卡</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+
+        <!-- ui-tab属性 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading>
+                <h3>8. &lt;ui-tab&gt; 属性</h3>
+            </ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>属性</th>
+                        <th>默认值</th>
+                        <th>类型</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>heading</code> 或 <code>&lt;ui-tab-heading&gt;</code></td>
+                        <td>null</td>
+                        <td>string</td>
+                        <td>使用<code>heading</code>属性设置选项卡标题，或使用html标签<code>&lt;ui-tab-heading&gt;</code>进行设置。</td>
+                    </tr>
+                    <tr>
+                        <td><code>active</code></td>
+                        <td>false</td>
+                        <td>boolean</td>
+                        <td>使当前选项卡为选中状态</td>
+                    </tr>
+                    <tr>
+                        <td><code>disable</code></td>
+                        <td>false</td>
+                        <td>boolean</td>
+                        <td>使当前选项卡为禁用状态</td>
+                    </tr>
+                    <tr>
+                        <td><code>tab-id</code></td>
+                        <td>null</td>
+                        <td>string</td>
+                        <td>当前tab的id，通过<code>ui-tabset</code>中<code>active-id</code>的匹配来指定默认显示的选项卡</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+
+        <!-- ui-tab事件 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading>
+                <h3>9. &lt;ui-tab&gt; 事件</h3>
+            </ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>事件名</th>
+                        <th>默认值</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>select()</code></td>
+                        <td>null</td>
+                        <td>当选项卡选中时触发该事件</td>
+                    </tr>
+                    <tr>
+                        <td><code>deselect()</code></td>
+                        <td>null</td>
+                        <td>当选项卡取消选中时触发该事件</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+    </section>
+</div>

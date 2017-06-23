@@ -462,3 +462,19 @@
 
 .panel.no-padding .panel-body {
   padding: 0; }
+
+.highlight {
+  font-size: 16px; }
+  .highlight .num {
+    color: #ccc;
+    font-size: 16px;
+    border-right: 4px solid #435a5f;
+    padding-right: 10px;
+    margin-right: 15px;
+    width: 40px;
+    display: inline-block;
+    text-align: right; }
+  .highlight .content {
+    font-size: 16px; }
+  .highlight .content:hover {
+    background: #435a5f; }

@@ -2,7 +2,7 @@
  * @author: shengrongchun
  */
 
-import style from './button.scss';
+import style from './tabs.scss';
 
 class Controller {
     constructor($rootScope) {

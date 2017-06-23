@@ -1,0 +1,21 @@
+<!-- <div>
+    <div class="nav-wrap nav-{{type || 'tabs'}}-wrap">
+        <ul class="nav nav-{{type || 'tabs'}} navigation-size-{{size}}" ng-class="{'nav-stacked': vertical, 'nav-justified': justified}" ng-transclude></ul>
+        <div class="nav-scroller nav-scroller-left disabled transition"><i class="fa fa-chevron-left"></i></div>
+        <div class="nav-scroller nav-scroller-right transition"><i class="fa fa-chevron-right"></i></div>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane" ng-repeat="tab in tabs" ng-class="{active: tab.active}" ui-tab-content-transclude="tab">
+        </div>
+    </div>
+</div> -->
+<div>
+    <ul class="nav nav-{{type || 'tabs'}}" 
+        ng-class="{'nav-stacked': vertical, 'nav-justified': justified}" ng-transclude>
+    </ul>
+    <div class="tab-content">
+       <div class="tab-pane" ng-repeat="tab in tabs" ng-class="{active: tab.active}" 
+            ui-tab-content-transclude="tab">
+        </div>
+    </div>
+</div>

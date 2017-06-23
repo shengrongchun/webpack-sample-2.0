@@ -1,0 +1,26 @@
+.highlight {
+
+    font-size: 16px;
+    
+    .num {
+        .hljs-number, .hljs-string {
+            color:#ccc;
+        }
+        color:#ccc;
+        font-size: 16px;
+        border-right: 4px solid #435a5f;
+        padding-right: 10px;
+        margin-right: 15px;
+        width: 40px;
+        display:inline-block;
+        text-align: right;
+    }
+    .content {
+        font-size: 16px;
+    }
+    .content:hover {
+        background: #435a5f;
+        
+    }
+}
+

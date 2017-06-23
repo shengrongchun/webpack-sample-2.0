@@ -1,7 +1,8 @@
 import '../../styles/src_ui_css';
 
+
 /*页面的加载*/
-const dependencies = ['ui.bootstrap'];
+const dependencies = ['ui.bootstrap.tabs'];
 
 
 /*创建应用*/

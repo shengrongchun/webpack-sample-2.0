@@ -64,6 +64,10 @@ a:focus {
         margin: 10px 0 0; }
         .container-fulid .container-inner .page-header .breadcrumb a {
           color: #b8b8b8; }
+
+/* 常用类 */
+.margin-top-30 {
+  margin-top: 30px; }
 @charset "UTF-8";
 .main-loginSlider-uTo7v {
   float: left;

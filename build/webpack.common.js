@@ -196,6 +196,7 @@ const webpackCommon = {
             jQuery: 'jquery',
             'window.jQuery': 'jquery',
             'window.$': 'jquery',
+            'hljs': 'highlight.js',
 
         })
 
@@ -205,12 +206,16 @@ const webpackCommon = {
     resolve: {
         //别名
         alias: {
+
             /*bootstrapui 样式引入*/
             bootstrap_css: path.resolve(config.node_modules, './bootstrap/dist/css/bootstrap.css'),
             /*字体 样式引入*/
             fontawesome_css: path.resolve(config.node_modules, './font-awesome/css/font-awesome.css'),
-            /*高亮默认样式*/
-            high_light: path.resolve(config.node_modules, './highlight/HighLighter-1.0.0-min.js'),
+
+
+            /*高亮 start*/
+            monokai_sublime_css: path.resolve(config.node_modules, './highlight.js/styles/monokai-sublime.css'),
+            /*高亮 end*/
         },
 
         //自定添加后缀，默认如果不写是：extensions: ['.js','.json'],webpack 2.0 不需传''

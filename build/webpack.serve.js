@@ -18,7 +18,7 @@ webpackServe.output =  {
     //入口文件输出名字
     filename: 'scripts/[name].js',
 
-    //
+    //html引入文件的路径，静态资源
     publicPath: '/'
 
 };

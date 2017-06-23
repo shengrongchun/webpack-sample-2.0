@@ -3,16 +3,16 @@
  * @author: shengrongchun
  */
 
-import controller from './code.controller';
-import templateUrl from './code.view.html';
+import controller from './tabs.controller';
+import templateUrl from './tabs.view.html';
 
 export default 
-angular.module('doc.code',[])
+angular.module('doc.tabs',[])
     .config(($stateProvider) => {
         "ngInject";
 
-        $stateProvider.state('code', {
-            url: "/code",
+        $stateProvider.state('components/tabs', {
+            url: "/components/tabs",
             templateUrl: templateUrl,
             controller: controller,
             controllerAs: 'vm',
