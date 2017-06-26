@@ -2,7 +2,15 @@ import '../../styles/src_ui_css';
 
 
 /*页面的加载*/
-const dependencies = ['ui.bootstrap.tabs'];
+const dependencies = [
+
+    'ui.bootstrap',
+    'ui.bootstrap._tabs',
+    'ui.bootstrap._accordion',
+    'ui.bootstrap._dropdown',
+    'ui.bootstrap._modal'
+
+    ];
 
 
 /*创建应用*/

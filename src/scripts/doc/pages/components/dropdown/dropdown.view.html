@@ -1,0 +1,404 @@
+<div class="page-main" ui-syntax-highlighter>
+    <header class="page-header clearfix">
+        <h2><i class="fa fa-puzzle-piece"></i>下拉菜单</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="#">Web组件</a>
+            </li>
+            <li class="active">
+                <strong>下拉菜单</strong>
+            </li>
+        </ol>
+    </header>
+    <section>
+        <!-- 基本使用 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>1. 基本使用</h3></ui-panel-heading>
+            <div class="margin-top-10">
+                <!-- 下拉框按钮 -->
+                <div class="btn-group" ui-dropdown ui-keyboard-nav>
+                    <button type="button" class="btn btn-primary" ui-dropdown-toggle>下拉框按钮 <i class="fa fa-caret-down"></i></span>
+                    </button>
+                    <ul ui-dropdown-menu>
+                        <li role="menuitem"><a href="#"><span class="label label-warning pull-right">14</span>链接1-1</a></li>
+                        <li role="menuitem"><a href="#">链接1-2</a></li>
+                        <li role="menuitem"><a href="#">链接1-3</a></li>
+                        <li class="divider"></li>
+                        <li role="menuitem"><a href="#">链接2-1</a></li>
+                    </ul>
+                </div>
+
+                <!-- 分隔下拉框按钮 -->
+                <div class="btn-group" ui-dropdown ui-keyboard-nav>
+                    <button id="split-button" type="button" class="btn btn-danger">分隔下拉框按钮</button>
+                    <button type="button" class="btn btn-danger" ui-dropdown-toggle><i class="fa fa-caret-down"></i></button>
+                    <ul ui-dropdown-menu>
+                        <li role="menuitem"><a href="#">链接1-1</a></li>
+                        <li role="menuitem"><a href="#">链接1-2</a></li>
+                        <li role="menuitem"><a href="#">链接1-3</a></li>
+                        <li class="divider"></li>
+                        <li role="menuitem"><a href="#">链接2-1</a></li>
+                    </ul>
+                </div>
+
+                <div class="example-code margin-top-30">
+                    <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                        <!-- 下拉框按钮 -->
+                        <div class="btn-group" ui-dropdown ui-keyboard-nav>
+                            <button type="button" class="btn btn-primary" ui-dropdown-toggle>下拉框按钮 <i class="fa fa-caret-down"></i></span>
+                            </button>
+                            <ul ui-dropdown-menu>
+                                <li role="menuitem"><a href="#">链接1-1</a></li>
+                                <li role="menuitem"><a href="#">链接1-2</a></li>
+                                <li role="menuitem"><a href="#">链接1-3</a></li>
+                                <li class="divider"></li>
+                                <li role="menuitem"><a href="#">链接2-1</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- 分隔下拉框按钮 -->
+                        <div class="btn-group" ui-dropdown ui-keyboard-nav>
+                            <button id="split-button" type="button" class="btn btn-danger">分隔下拉框按钮</button>
+                            <button type="button" class="btn btn-danger" ui-dropdown-toggle><i class="fa fa-caret-down"></i></button>
+                            <ul ui-dropdown-menu>
+                                <li role="menuitem"><a href="#">链接1-1</a></li>
+                                <li role="menuitem"><a href="#">链接1-2</a></li>
+                                <li role="menuitem"><a href="#">链接1-3</a></li>
+                                <li class="divider"></li>
+                                <li role="menuitem"><a href="#">链接2-1</a></li>
+                            </ul>
+                        </div>
+                    ]]></script>
+                </div>
+            </div>
+        </ui-panel>
+
+        <!-- 使用模版 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>2. 使用模版</h3></ui-panel-heading>
+            <p>在下拉框<code>ul</code>上添加<code>template-url</code>属性，使用模版显示下拉框菜单项。</p>
+            <div class="margin-top-30">
+                <!-- 下拉框按钮(使用模版) -->
+                <div class="btn-group" ui-dropdown>
+                    <button id="button-template-url" type="button" class="btn btn-primary" ui-dropdown-toggle>下拉框按钮(使用模版) <i class="fa fa-caret-down"></i></button>
+                    <ul ui-dropdown-menu template-url="dropdown.html"></ul>
+                </div>
+
+                <script type="text/ng-template" id="dropdown.html">
+                    <ul ui-dropdown-menu>
+                        <li role="menuitem"><a href="#">链接1-1</a></li>
+                        <li role="menuitem"><a href="#">链接1-2</a></li>
+                        <li role="menuitem"><a href="#">链接1-3</a></li>
+                        <li class="divider"></li>
+                        <li role="menuitem"><a href="#">链接2-1</a></li>
+                    </ul>
+                </script>
+                <br /><br />
+            </div>
+        </ui-panel>
+
+        <ui-panel class="no-padding" panel-toolbar="false">
+            <ui-tabset>
+                <ui-tab>
+                    <ui-tab-heading>HTML</ui-tab-heading>
+                    <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                        <!-- 下拉框按钮(使用模版) -->
+                        <div class="btn-group" dropdown>
+                            <button id="button-template-url" type="button" class="btn btn-primary" dropdown-toggle>下拉框按钮(使用模版) <i class="fa fa-caret-down"></i></button>
+                            <ul ui-dropdown-menu template-url="dropdown.html"></ul>
+                        </div>
+                    ]]></script>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>Template (dropdown.html)</ui-tab-heading>
+                    <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                        <ul ui-dropdown-menu>
+                            <li role="menuitem"><a href="#">链接1-1</a></li>
+                            <li role="menuitem"><a href="#">链接1-2</a></li>
+                            <li role="menuitem"><a href="#">链接1-3</a></li>
+                            <li class="divider"></li>
+                            <li role="menuitem"><a href="#">链接2-1</a></li>
+                        </ul>
+                    ]]></script>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+        
+        <!-- 添加动画 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>3. 添加动画</h3></ui-panel-heading>
+            <p>在<code>ui-dropdown-menu</code>指令上添加动画<code>class</code>，为下拉菜单添加动画效果。</p>
+            <p>可用的动画<code>class</code>名称</p>
+            <ul>
+                <li><code>fade-in</code> 淡出</li>
+                <li><code>fade-in-up</code> 自下至上淡出</li>
+                <li><code>fade-in-down</code> 自上至下淡出</li>
+            </ul>
+            <div class="margin-top-20">
+                <!-- 下拉框按钮 -->
+                <div class="btn-group" ui-dropdown ui-keyboard-nav>
+                    <button type="button" class="btn btn-primary" ui-dropdown-toggle>fade-in-up <i class="fa fa-caret-down"></i></span>
+                    </button>
+                    <ul ui-dropdown-menu class="fade-in-up">
+                        <li role="menuitem"><a href="#">链接1-1</a></li>
+                        <li role="menuitem"><a href="#">链接1-2</a></li>
+                        <li role="menuitem"><a href="#">链接1-3</a></li>
+                        <li class="divider"></li>
+                        <li role="menuitem"><a href="#">链接2-1</a></li>
+                    </ul>
+                </div>
+
+                <!-- 下拉框按钮 -->
+                <div class="btn-group" ui-dropdown ui-keyboard-nav>
+                    <button type="button" class="btn btn-primary" ui-dropdown-toggle>fade-in-down <i class="fa fa-caret-down"></i></span>
+                    </button>
+                    <ul ui-dropdown-menu class="fade-in-down">
+                        <li role="menuitem"><a href="#">链接1-1</a></li>
+                        <li role="menuitem"><a href="#">链接1-2</a></li>
+                        <li role="menuitem"><a href="#">链接1-3</a></li>
+                        <li class="divider"></li>
+                        <li role="menuitem"><a href="#">链接2-1</a></li>
+                    </ul>
+                </div>
+
+                <!-- 下拉框按钮 -->
+                <div class="btn-group" ui-dropdown ui-keyboard-nav  auto-close="outsideClick">
+                    <button type="button" class="btn btn-primary" ui-dropdown-toggle>fade-in <i class="fa fa-caret-down"></i></span>
+                    </button>
+                    <div ui-dropdown-menu class="fade-in">
+                        <form class="dropdown-form">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">电子邮箱: </label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="电子邮箱">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">密码: </label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="密码">
+                            </div>
+                            <button type="submit" class="btn btn-default">提交</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="example-code margin-top-30">
+                    <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                        <!-- 下拉框按钮 -->
+                        <div class="btn-group" ui-dropdown ui-keyboard-nav>
+                            <button type="button" class="btn btn-primary" ui-dropdown-toggle>fade-in-up <i class="fa fa-caret-down"></i></span>
+                            </button>
+                            <ul ui-dropdown-menu class="fade-in-up">
+                                <li role="menuitem"><a href="#">链接1-1</a></li>
+                                <li role="menuitem"><a href="#">链接1-2</a></li>
+                                <li role="menuitem"><a href="#">链接1-3</a></li>
+                                <li class="divider"></li>
+                                <li role="menuitem"><a href="#">链接2-1</a></li>
+                            </ul>
+                        </div>
+                    ]]></script>
+                </div>
+            </div>
+        </ui-panel>
+
+        <!-- 下拉框中显示其他组件 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>4. 下拉框中显示其他组件</h3></ui-panel-heading>
+            <p>任何组件或元素上都可使用<code>ui-dropdown-menu</code>，用来创建更为复杂的下拉框。如下拉框中显示表单或表格</p>
+            <div class="note">在弹出表单后，需要点击输入框及按钮，此场景下需要阻止下拉框的自动关闭，可在<code>ui-dropdown</code>指令上添加属性<code>auto-close="outsideClick"</code></div>
+            <div class="note"><code>ui-dropdown-menu</code>指令包含默认的<code>min-width:150px</code>，因此在显示表格、表单等宽度自适应的组件时需要设置固定宽度。</div>
+            <div class="margin-top-20">
+                <!-- 表单下拉框 -->
+                <div class="btn-group" ui-dropdown ui-keyboard-nav auto-close="outsideClick">
+                    <button type="button" class="btn btn-primary" ui-dropdown-toggle>表单下拉框 <i class="fa fa-caret-down"></i></span>
+                    </button>
+                    <div ui-dropdown-menu class="fade-in-down">
+                        <form class="dropdown-form">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">电子邮箱: </label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="电子邮箱">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">密码: </label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="密码">
+                            </div>
+                            <button type="submit" class="btn btn-default">提交</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 表格下拉框 -->
+                <div class="btn-group" ui-dropdown ui-keyboard-nav auto-close="outsideClick">
+                    <button type="button" class="btn btn-primary" ui-dropdown-toggle>表格下拉框 <i class="fa fa-caret-down"></i></span>
+                    </button>
+                    <div ui-dropdown-menu class="fade-in-down">
+                        <table class="table dropdown-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>项目组</th>
+                                    <th>进度</th>
+                                    <th>计划日期</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>分布式缓存</td>
+                                    <td>50%</td>
+                                    <td>2015-09-12</td>
+                                    <td><button class="btn btn-default btn-xs"><i class="fa fa-check"></i> 完成</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>分布式数据库</td>
+                                    <td>20%</td>
+                                    <td>2015-09-12</td>
+                                    <td><button class="btn btn-default btn-xs"><i class="fa fa-check"></i> 完成</button></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>负载均衡</td>
+                                    <td>30%</td>
+                                    <td>2015-09-12</td>
+                                    <td><button class="btn btn-default btn-xs"><i class="fa fa-check"></i> 完成</button></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>消息中间件</td>
+                                    <td>80%</td>
+                                    <td>2015-09-12</td>
+                                    <td><button class="btn btn-default btn-xs"><i class="fa fa-check"></i> 完成</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="example-code margin-top-30">
+                    <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                        <!-- 表单下拉框 -->
+                        <div class="btn-group" ui-dropdown ui-keyboard-nav auto-close="outsideClick">
+                            <button type="button" class="btn btn-primary" ui-dropdown-toggle>表单下拉框 <i class="fa fa-caret-down"></i></span>
+                            </button>
+                            <div ui-dropdown-menu class="fade-in-down">
+                                <form class="dropdown-form"><!-- .dropdown-form 需要开发者在项目定义 -->
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">电子邮箱: </label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="电子邮箱">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">密码: </label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="密码">
+                                    </div>
+                                    <button type="submit" class="btn btn-default">提交</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- 表格下拉框 -->
+                        <div class="btn-group" ui-dropdown ui-keyboard-nav auto-close="outsideClick">
+                            <button type="button" class="btn btn-primary" ui-dropdown-toggle>表格下拉框 <i class="fa fa-caret-down"></i></span>
+                            </button>
+                            <div ui-dropdown-menu class="fade-in-down">
+                                <table class="table dropdown-table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>项目组</th>
+                                            <th>进度</th>
+                                            <th>计划日期</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>分布式缓存</td>
+                                            <td>50%</td>
+                                            <td>2015-09-12</td>
+                                            <td><button class="btn btn-default btn-xs"><i class="fa fa-check"></i> 完成</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>分布式数据库</td>
+                                            <td>20%</td>
+                                            <td>2015-09-12</td>
+                                            <td><button class="btn btn-default btn-xs"><i class="fa fa-check"></i> 完成</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>负载均衡</td>
+                                            <td>30%</td>
+                                            <td>2015-09-12</td>
+                                            <td><button class="btn btn-default btn-xs"><i class="fa fa-check"></i> 完成</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>消息中间件</td>
+                                            <td>80%</td>
+                                            <td>2015-09-12</td>
+                                            <td><button class="btn btn-default btn-xs"><i class="fa fa-check"></i> 完成</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    ]]></script>
+                </div>
+            </div>
+        </ui-panel>
+
+
+        <!-- ui-dropdown 属性 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>5. ui-dropdown 属性</h3></ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="20%">属性名</th>
+                        <th width="20%">默认值</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>is-open</code></td>
+                        <td><code>false</code></td>
+                        <td>是否默认显示下拉框。</td>
+                    </tr>
+                    <tr>
+                        <td><code>auto-close</code></td>
+                        <td><code>always</code></td>
+                        <td><code>always</code>: 点击任何元素都会触发关闭下拉框；<code>outsideClick</code>: 点击下拉框以外的元素触发关闭下拉框；<code>disabled</code>: 禁用自动关闭，但是可以通过<code>is-open</code>属性控制是否显示下拉框。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+
+        <!-- ui-dropdown 指令 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>6. ui-dropdown 指令</h3></ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>指令名</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>dropdown-append-to-body</code></td>
+                        <td>将下拉框html插入到body中。用于处理下拉框所在容器<code>overflow:hidden</code>情况。</td>
+                    </tr>
+                    <tr>
+                        <td><code>ui-keyboard-nav</code></td>
+                        <td>使下拉框选项支持使用键盘上下键选择。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+    </section>
+</div>

@@ -24,20 +24,25 @@
         </ui-panel>
         <ui-panel class="no-padding">
 
-            <ui-tabset active="activePill"  type="pills">
-                <ui-tab index="0" heading="Static title">Static content</ui-tab>
-                <ui-tab index="1" select="alertMe()">
-                  <ui-tab-heading>
-                    <i class="glyphicon glyphicon-bell"></i> Alert!
-                  </ui-tab-heading>
-                  I've got an HTML heading, and a select callback. Pretty cool!
+            <ui-tabset>
+                <ui-tab>
+                    <ui-tab-heading>首页</ui-tab-heading>
+                    <p>首页</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>帮助信息</ui-tab-heading>
+                    <p>帮助信息</p>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>关于</ui-tab-heading>
+                    <p>关于</p>
                 </ui-tab>
             </ui-tabset>
 
         </ui-panel>
         <ui-panel panel-toolbar="false">
-            <div class="example-code">
-                <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+            <pre>
+                <code ui-highlight class="xml">
                     <ui-tabset>
                         <ui-tab>
                             <ui-tab-heading>首页</ui-tab-heading>
@@ -52,8 +57,8 @@
                             <p>...</p>
                         </ui-tab>
                     </ui-tabset>
-                ]]></script>
-            </div>
+                </code>
+            </pre>
         </ui-panel>
 
         <!-- 动态内容 -->
@@ -64,16 +69,20 @@
             <p>使用AngularJS为选项卡绑定数据。通过<code>ui-tabset</code>中的属性<code>active-id</code>和<code>ui-tab</code>中的属性<code>tab-id</code>匹配来默认激活指定的选项卡。</p>
             <p>下面例子演示了动态呈现选项卡的方式。</p>
         </ui-panel>
-        <ui-panel class="no-padding" panel-toolbar="false">
-            <ui-tabset active-id="activeId">
-                <ui-tab tab-id="{{tab.id}}" ng-repeat="tab in tabList" active="tab.active" select="selectTab(tab)" deselect="deselectTab(tab)">
-                    <ui-tab-heading>{{tab.heading}} <button class="btn btn-link btn-xs" ng-click="removeTab(tab)"><i class="fa fa-times"></i></button></ui-tab-heading>
+        <ui-panel class="no-padding">
+
+            <ui-tabset active-id="vm.activeId">
+
+                <ui-tab tab-id="{{tab.id}}" ng-repeat="tab in vm.tabList" active="tab.active" select="vm.selectTab(tab)" deselect="vm.deselectTab(tab)">
+                    <ui-tab-heading>{{tab.heading}} <button class="btn btn-link btn-xs" ng-click="vm.removeTab(tab)"><i class="fa fa-times"></i></button></ui-tab-heading>
                     <p>{{tab.content}}</p>
                 </ui-tab>
+
             </ui-tabset>
+
         </ui-panel>
-        <div class="margin-bottom-20">
-            <button class="btn btn-primary" type="button" ng-click="insertTab()">添加新的选项卡</button>
+        <div class="margin-bottom-30">
+            <button class="btn btn-primary" type="button" ng-click="vm.insertTab()">添加新的选项卡</button>
         </div>
         <ui-panel class="no-padding" panel-toolbar="false">
             <ui-tabset>
@@ -487,7 +496,6 @@
             </ui-tabset>
 
             <p class="margin-top-30">导航样式6: <code>type="navigation-6"</code></p>
-            <div class="note">该样式与<code>panel</code>组件结合使用时，会包含-41px的向上移动，因此需要在实际使用中在<code>panel</code>组件上手动添加外边距。</div>
             
             <ui-panel class="no-padding margin-top-50">
                 <ui-tabset type="navigation-6">

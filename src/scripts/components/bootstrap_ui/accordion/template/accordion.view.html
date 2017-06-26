@@ -1,0 +1,12 @@
+<div class="accordion {{type || 'accordion-default'}}">
+
+    <div class="accordion-heading"  ng-class="{expand: isOpen}" ng-click="toggleOpen()" ui-transclude-heading="heading">
+        <i ng-if="icon !== 'false'" class="fa fa-angle-right" ng-class="{'pull-right': iconPosition == 'right'}"></i>
+        <span ng-class="{'text-muted': isDisabled}">{{heading}}</span>
+    </div>
+
+    <div class="accordion-collapse" ui-collapse="!isOpen">
+        <div class="accordion-body" ng-transclude></div>
+    </div>
+
+</div>

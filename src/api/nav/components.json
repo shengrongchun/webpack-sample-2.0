@@ -15,15 +15,15 @@
                 "name": "选项卡 - Tab",
                 "icon": "caret-right"
             }, {
-                "link": "#/components/accordion",
+                "link": "#!/components/accordion",
                 "name": "手风琴 - Accordion",
                 "icon": "caret-right"
             }, {
-                "link": "#/components/modal",
+                "link": "#!/components/modal",
                 "name": "模态框 - Modal",
                 "icon": "caret-right"
             }, {
-                "link": "#/components/dropdown",
+                "link": "#!/components/dropdown",
                 "name": "下拉菜单 - Dropdown",
                 "icon": "caret-right"
             }]

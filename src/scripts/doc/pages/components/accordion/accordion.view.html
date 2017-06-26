@@ -1,0 +1,219 @@
+<div class="page-main" ui-syntax-highlighter>
+    <header class="page-header clearfix">
+        <h2><i class="fa fa-puzzle-piece"></i>手风琴</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="#">Web组件</a>
+            </li>
+            <li class="active">
+                <strong>手风琴</strong>
+            </li>
+        </ol>
+    </header>
+    <section>
+        <!-- 基本使用 -->
+        <ui-panel>
+            <ui-panel-heading>
+                <h3>1. 基本使用</h3>
+            </ui-panel-heading>
+            <p>将<code>&lt;ui-accordion&gt;</code>标签组嵌套在<code>&lt;ui-accordion-group&gt;</code>中组成手风琴组件，下面例子演示了手风琴组件。</p>
+        </ui-panel>
+        <ui-accordion-group  class="margin-bottom-20">
+            <ui-accordion is-open="true" heading="Hac cubilia justo">
+                Duis donec aptent. Eros aliquam torquent hendrerit quisque taciti. Mi magnis diam curae; malesuada tempus. Hendrerit turpis est natoque maecenas tellus euismod etiam nullam. Torquent ridiculus euismod parturient pretium malesuada, malesuada viverra, ante dictum nisi feugiat nisl facilisis suspendisse. Maecenas. At purus fames rutrum rutrum commodo facilisi augue tempus ultricies, bibendum, hymenaeos curabitur, consectetuer integer. Turpis interdum nullam sed semper sem tincidunt dis. Eget ad. Egestas ligula leo aptent auctor Ultrices massa nullam nullam blandit penatibus urna torquent primis vel risus varius pretium nonummy adipiscing mattis dolor. Volutpat. Nonummy cum eros maecenas sed tristique adipiscing gravida litora cursus. Scelerisque luctus.
+            </ui-accordion>
+            <ui-accordion heading="Litora Hac cubilia justo">
+                Duis donec aptent. Eros aliquam torquent hendrerit quisque taciti. Mi magnis diam curae; malesuada tempus. Hendrerit turpis est natoque maecenas tellus euismod etiam nullam. Torquent ridiculus euismod parturient pretium malesuada, malesuada viverra, ante dictum nisi feugiat nisl facilisis suspendisse. Maecenas. At purus fames rutrum rutrum commodo facilisi augue tempus ultricies, bibendum, hymenaeos curabitur, consectetuer integer. Turpis interdum nullam sed semper sem tincidunt dis. Eget ad. Egestas ligula leo aptent auctor Ultrices massa nullam nullam blandit penatibus urna torquent primis vel risus varius pretium nonummy adipiscing mattis dolor. Volutpat. Nonummy cum eros maecenas sed tristique adipiscing gravida litora cursus. Scelerisque luctus.
+            </ui-accordion>
+            <ui-accordion>
+                <ui-accordion-heading is-open="true"><em>Duis donec aptent</em></ui-accordion-heading>
+                Duis donec aptent. Eros aliquam torquent hendrerit quisque taciti. Mi magnis diam curae; malesuada tempus. Hendrerit turpis est natoque maecenas tellus euismod etiam nullam. Torquent ridiculus euismod parturient pretium malesuada, malesuada viverra, ante dictum nisi feugiat nisl facilisis suspendisse. Maecenas. At purus fames rutrum rutrum commodo facilisi augue tempus ultricies, bibendum, hymenaeos curabitur, consectetuer integer. Turpis interdum nullam sed semper sem tincidunt dis. Eget ad. Egestas ligula leo aptent auctor Ultrices massa nullam nullam blandit penatibus urna torquent primis vel risus varius pretium nonummy adipiscing mattis dolor. Volutpat. Nonummy cum eros maecenas sed tristique adipiscing gravida litora cursus. Scelerisque luctus.
+            </ui-accordion>
+        </ui-accordion-group>
+        <ui-panel class="no-padding">
+            <ui-tabset>
+                <ui-tab>
+                    <ui-tab-heading>HTML</ui-tab-heading>
+                    <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                        <ui-accordion-group class="margin-bottom-20">
+                            <ui-accordion is-open="true" heading="Hac cubilia justo">
+                                Duis donec aptent. Eros aliquam torquent hendrerit quisque taciti. Mi magnis diam curae; malesuada tempus. Hendrerit turpis est natoque maecenas tellus euismod etiam nullam. Torquent ridiculus euismod parturient pretium malesuada, malesuada viverra, ante dictum nisi feugiat nisl facilisis suspendisse. Maecenas. At purus fames rutrum rutrum commodo facilisi augue tempus ultricies, bibendum, hymenaeos curabitur, consectetuer integer. Turpis interdum nullam sed semper sem tincidunt dis. Eget ad. Egestas ligula leo aptent auctor Ultrices massa nullam nullam blandit penatibus urna torquent primis vel risus varius pretium nonummy adipiscing mattis dolor. Volutpat. Nonummy cum eros maecenas sed tristique adipiscing gravida litora cursus. Scelerisque luctus.
+                            </ui-accordion>
+                            <ui-accordion heading="Litora Hac cubilia justo">
+                                Duis donec aptent. Eros aliquam torquent hendrerit quisque taciti. Mi magnis diam curae; malesuada tempus. Hendrerit turpis est natoque maecenas tellus euismod etiam nullam. Torquent ridiculus euismod parturient pretium malesuada, malesuada viverra, ante dictum nisi feugiat nisl facilisis suspendisse. Maecenas. At purus fames rutrum rutrum commodo facilisi augue tempus ultricies, bibendum, hymenaeos curabitur, consectetuer integer. Turpis interdum nullam sed semper sem tincidunt dis. Eget ad. Egestas ligula leo aptent auctor Ultrices massa nullam nullam blandit penatibus urna torquent primis vel risus varius pretium nonummy adipiscing mattis dolor. Volutpat. Nonummy cum eros maecenas sed tristique adipiscing gravida litora cursus. Scelerisque luctus.
+                            </ui-accordion>
+                            <ui-accordion>
+                                <ui-accordion-heading is-open="true"><em>Duis donec aptent</em></ui-accordion-heading>
+                                Duis donec aptent. Eros aliquam torquent hendrerit quisque taciti. Mi magnis diam curae; malesuada tempus. Hendrerit turpis est natoque maecenas tellus euismod etiam nullam. Torquent ridiculus euismod parturient pretium malesuada, malesuada viverra, ante dictum nisi feugiat nisl facilisis suspendisse. Maecenas. At purus fames rutrum rutrum commodo facilisi augue tempus ultricies, bibendum, hymenaeos curabitur, consectetuer integer. Turpis interdum nullam sed semper sem tincidunt dis. Eget ad. Egestas ligula leo aptent auctor Ultrices massa nullam nullam blandit penatibus urna torquent primis vel risus varius pretium nonummy adipiscing mattis dolor. Volutpat. Nonummy cum eros maecenas sed tristique adipiscing gravida litora cursus. Scelerisque luctus.
+                            </ui-accordion>
+                        </ui-accordion-group>
+                    ]]></script>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+
+        <!-- 关闭手风琴风格 -->
+        <ui-panel>
+            <ui-panel-heading>
+                <h3>2. 关闭手风琴风格</h3>
+            </ui-panel-heading>
+            <p>将属性<code>close-others</code>设为<code>false</code>关闭手风琴风格。</p>
+        </ui-panel>
+        <ui-accordion-group close-others="false"  class="margin-bottom-20">
+            <ui-accordion is-open="true" heading="Hac cubilia justo">
+                Duis donec aptent. Eros aliquam torquent hendrerit quisque taciti. Mi magnis diam curae; malesuada tempus. Hendrerit turpis est natoque maecenas tellus euismod etiam nullam. Torquent ridiculus euismod parturient pretium malesuada, malesuada viverra, ante dictum nisi feugiat nisl facilisis suspendisse. Maecenas. At purus fames rutrum rutrum commodo facilisi augue tempus ultricies, bibendum, hymenaeos curabitur, consectetuer integer. Turpis interdum nullam sed semper sem tincidunt dis. Eget ad. Egestas ligula leo aptent auctor Ultrices massa nullam nullam blandit penatibus urna torquent primis vel risus varius pretium nonummy adipiscing mattis dolor. Volutpat. Nonummy cum eros maecenas sed tristique adipiscing gravida litora cursus. Scelerisque luctus.
+            </ui-accordion>
+            <ui-accordion heading="Litora Hac cubilia justo">
+                Duis donec aptent. Eros aliquam torquent hendrerit quisque taciti. Mi magnis diam curae; malesuada tempus. Hendrerit turpis est natoque maecenas tellus euismod etiam nullam. Torquent ridiculus euismod parturient pretium malesuada, malesuada viverra, ante dictum nisi feugiat nisl facilisis suspendisse. Maecenas. At purus fames rutrum rutrum commodo facilisi augue tempus ultricies, bibendum, hymenaeos curabitur, consectetuer integer. Turpis interdum nullam sed semper sem tincidunt dis. Eget ad. Egestas ligula leo aptent auctor Ultrices massa nullam nullam blandit penatibus urna torquent primis vel risus varius pretium nonummy adipiscing mattis dolor. Volutpat. Nonummy cum eros maecenas sed tristique adipiscing gravida litora cursus. Scelerisque luctus.
+            </ui-accordion>
+            <ui-accordion>
+                <ui-accordion-heading><em>Duis donec aptent</em></ui-accordion-heading>
+                Duis donec aptent. Eros aliquam torquent hendrerit quisque taciti. Mi magnis diam curae; malesuada tempus. Hendrerit turpis est natoque maecenas tellus euismod etiam nullam. Torquent ridiculus euismod parturient pretium malesuada, malesuada viverra, ante dictum nisi feugiat nisl facilisis suspendisse. Maecenas. At purus fames rutrum rutrum commodo facilisi augue tempus ultricies, bibendum, hymenaeos curabitur, consectetuer integer. Turpis interdum nullam sed semper sem tincidunt dis. Eget ad. Egestas ligula leo aptent auctor Ultrices massa nullam nullam blandit penatibus urna torquent primis vel risus varius pretium nonummy adipiscing mattis dolor. Volutpat. Nonummy cum eros maecenas sed tristique adipiscing gravida litora cursus. Scelerisque luctus.
+            </ui-accordion>
+        </ui-accordion-group>
+        <ui-panel class="no-padding">
+            <ui-tabset>
+                <ui-tab>
+                    <ui-tab-heading>HTML</ui-tab-heading>
+                    <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                        <ui-accordion-group close-others="false">
+                            ...
+                        </ui-accordion-group>
+                    ]]></script>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+
+        <!-- 设置图标 -->
+        <ui-panel>
+            <ui-panel-heading>
+                <h3>3. 设置图标</h3>
+            </ui-panel-heading>
+            <ul>
+                <li>将属性<code>icon</code>设为<code>false</code>可将图标隐藏。</li>
+                <li>将属性<code>icon-position</code>设为<code>right</code>可将图标显示至右侧。</li>
+            </ul>
+        </ui-panel>
+        <div class="row">
+            <div class="col-md-6">
+                <ui-accordion-group icon="false" class="margin-bottom-20">
+                    <ui-accordion is-open="true" heading="Hac cubilia justo">
+                        Duis donec aptent. Eros aliquam torquent hendrerit quisque taciti. Mi magnis diam curae; malesuada tempus. Hendrerit turpis est natoque maecenas tellus euismod etiam nullam. Torquent ridiculus euismod parturient pretium malesuada, malesuada viverra, ante dictum nisi feugiat nisl facilisis suspendisse. Maecenas. At purus fames rutrum rutrum commodo facilisi augue tempus ultricies, bibendum, hymenaeos curabitur, consectetuer integer. Turpis interdum nullam sed semper sem tincidunt dis. Eget ad. Egestas ligula leo aptent auctor Ultrices massa nullam nullam blandit penatibus urna torquent primis vel risus varius pretium nonummy adipiscing mattis dolor. Volutpat. Nonummy cum eros maecenas sed tristique adipiscing gravida litora cursus. Scelerisque luctus.
+                    </ui-accordion>
+                    <ui-accordion heading="Litora Hac cubilia justo">
+                        Duis donec aptent. Eros aliquam torquent hendrerit quisque taciti. Mi magnis diam curae; malesuada tempus. Hendrerit turpis est natoque maecenas tellus euismod etiam nullam. Torquent ridiculus euismod parturient pretium malesuada, malesuada viverra, ante dictum nisi feugiat nisl facilisis suspendisse. Maecenas. At purus fames rutrum rutrum commodo facilisi augue tempus ultricies, bibendum, hymenaeos curabitur, consectetuer integer. Turpis interdum nullam sed semper sem tincidunt dis. Eget ad. Egestas ligula leo aptent auctor Ultrices massa nullam nullam blandit penatibus urna torquent primis vel risus varius pretium nonummy adipiscing mattis dolor. Volutpat. Nonummy cum eros maecenas sed tristique adipiscing gravida litora cursus. Scelerisque luctus.
+                    </ui-accordion>
+                    <ui-accordion>
+                        <ui-accordion-heading is-open="true"><em>Duis donec aptent</em></ui-accordion-heading>
+                        Duis donec aptent. Eros aliquam torquent hendrerit quisque taciti. Mi magnis diam curae; malesuada tempus. Hendrerit turpis est natoque maecenas tellus euismod etiam nullam. Torquent ridiculus euismod parturient pretium malesuada, malesuada viverra, ante dictum nisi feugiat nisl facilisis suspendisse. Maecenas. At purus fames rutrum rutrum commodo facilisi augue tempus ultricies, bibendum, hymenaeos curabitur, consectetuer integer. Turpis interdum nullam sed semper sem tincidunt dis. Eget ad. Egestas ligula leo aptent auctor Ultrices massa nullam nullam blandit penatibus urna torquent primis vel risus varius pretium nonummy adipiscing mattis dolor. Volutpat. Nonummy cum eros maecenas sed tristique adipiscing gravida litora cursus. Scelerisque luctus.
+                    </ui-accordion>
+                </ui-accordion-group>
+            </div>
+            <div class="col-md-6">
+                <ui-accordion-group icon="true" icon-position="right" class="margin-bottom-20">
+                    <ui-accordion is-open="true" heading="Duis donec aptent">
+                        Duis donec aptent. Eros aliquam torquent hendrerit quisque taciti. Mi magnis diam curae; malesuada tempus. Hendrerit turpis est natoque maecenas tellus euismod etiam nullam. Torquent ridiculus euismod parturient pretium malesuada, malesuada viverra, ante dictum nisi feugiat nisl facilisis suspendisse. Maecenas. At purus fames rutrum rutrum commodo facilisi augue tempus ultricies, bibendum, hymenaeos curabitur, consectetuer integer. Turpis interdum nullam sed semper sem tincidunt dis. Eget ad. Egestas ligula leo aptent auctor Ultrices massa nullam nullam blandit penatibus urna torquent primis vel risus varius pretium nonummy adipiscing mattis dolor. Volutpat. Nonummy cum eros maecenas sed tristique adipiscing gravida litora cursus. Scelerisque luctus.
+                    </ui-accordion>
+                    <ui-accordion heading="Litora Hac cubilia justo">
+                        Duis donec aptent. Eros aliquam torquent hendrerit quisque taciti. Mi magnis diam curae; malesuada tempus. Hendrerit turpis est natoque maecenas tellus euismod etiam nullam. Torquent ridiculus euismod parturient pretium malesuada, malesuada viverra, ante dictum nisi feugiat nisl facilisis suspendisse. Maecenas. At purus fames rutrum rutrum commodo facilisi augue tempus ultricies, bibendum, hymenaeos curabitur, consectetuer integer. Turpis interdum nullam sed semper sem tincidunt dis. Eget ad. Egestas ligula leo aptent auctor Ultrices massa nullam nullam blandit penatibus urna torquent primis vel risus varius pretium nonummy adipiscing mattis dolor. Volutpat. Nonummy cum eros maecenas sed tristique adipiscing gravida litora cursus. Scelerisque luctus.
+                    </ui-accordion>
+                    <ui-accordion>
+                        <ui-accordion-heading><em>Duis donec aptent</em></ui-accordion-heading>
+                        Duis donec aptent. Eros aliquam torquent hendrerit quisque taciti. Mi magnis diam curae; malesuada tempus. Hendrerit turpis est natoque maecenas tellus euismod etiam nullam. Torquent ridiculus euismod parturient pretium malesuada, malesuada viverra, ante dictum nisi feugiat nisl facilisis suspendisse. Maecenas. At purus fames rutrum rutrum commodo facilisi augue tempus ultricies, bibendum, hymenaeos curabitur, consectetuer integer. Turpis interdum nullam sed semper sem tincidunt dis. Eget ad. Egestas ligula leo aptent auctor Ultrices massa nullam nullam blandit penatibus urna torquent primis vel risus varius pretium nonummy adipiscing mattis dolor. Volutpat. Nonummy cum eros maecenas sed tristique adipiscing gravida litora cursus. Scelerisque luctus.
+                    </ui-accordion>
+                </ui-accordion-group>
+            </div>
+        </div>
+        
+        <ui-panel class="no-padding">
+            <ui-tabset>
+                <ui-tab>
+                    <ui-tab-heading>HTML</ui-tab-heading>
+                    <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                        <ui-accordion-group icon="false">
+                            ...
+                        </ui-accordion-group>
+
+                        <ui-accordion-group icon-position="right">
+                            ...
+                        </ui-accordion-group>
+                    ]]></script>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+
+        <!-- accordion-group 属性 -->
+        <ui-panel>
+            <ui-panel-heading>
+                <h3>4. &lt;ui-accordion-group&gt; 属性</h3>
+            </ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>属性名</th>
+                        <th>默认值</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>close-others</code></td>
+                        <td>true</td>
+                        <td>当展开一个栏目是否收起其它已展开的栏目</td>
+                    </tr>
+                    <tr>
+                        <td><code>icon</code></td>
+                        <td>true</td>
+                        <td>是否显示图标</td>
+                    </tr>
+                    <tr>
+                        <td><code>icon-position</code></td>
+                        <td>left</td>
+                        <td>图标显示位置，可选值: <code>left</code>, <code>right</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>template-url</code></td>
+                        <td>默认模版URL</td>
+                        <td>重写手风琴组件Html模版URL</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+
+        <!-- accordion 属性 -->
+        <ui-panel>
+            <ui-panel-heading>
+                <h3>5. &lt;ui-accordion&gt; 属性</h3>
+            </ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>属性名</th>
+                        <th>默认值</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>heading</code> 或 <code>&lt;ui-accordion-heading&gt;</code></td>
+                        <td>null</td>
+                        <td>使用<code>heading</code>属性设置选项卡标题，或使用html标签<code>&lt;ui-accordion-heading&gt;</code>进行设置。</td>
+                    </tr>
+                    <tr>
+                        <td><code>is-open</code></td>
+                        <td>false</td>
+                        <td>默认展开该栏目</td>
+                    </tr>
+                    <tr>
+                        <td><code>template-url</code></td>
+                        <td>默认模版URL</td>
+                        <td>重写手风琴栏目Html模版URL</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+    </section>
+</div>
