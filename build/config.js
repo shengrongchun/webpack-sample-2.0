@@ -60,7 +60,7 @@ const config = {
         'monokai_sublime_css',
         'highlight.js',
     /*高亮 end*/
-
+        'angular-animate',
         'angular-bootstrap','bootstrap_css','fontawesome_css', path.resolve(src_path+'/scripts/components', index_file)],
 
     //主入口集合

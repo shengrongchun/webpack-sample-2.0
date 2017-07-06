@@ -91,7 +91,9 @@ angular.module('ui.bootstrap._modal', ['ui.bootstrap.multiMap', 'ui.bootstrap.st
       link: function(scope, element, attrs) {
         element.addClass(attrs.windowTopClass || '');
         scope.size = attrs.size;
-
+        scope.position = attrs.position;
+        scope.closeBtn = angular.isDefined(attrs.closeBtn) && attrs.closeBtn == 'false' ? false : true;
+        
         scope.close = function(evt) {
           var modal = $modalStack.getTop();
           if (modal && modal.value.backdrop &&
@@ -101,6 +103,13 @@ angular.module('ui.bootstrap._modal', ['ui.bootstrap.multiMap', 'ui.bootstrap.st
             evt.stopPropagation();
             $modalStack.dismiss(modal.key, 'backdrop click');
           }
+        };
+
+        scope.btnClose = function(evt) {
+          var modal = $modalStack.getTop();
+          evt.preventDefault();
+          evt.stopPropagation();
+          $modalStack.dismiss(modal.key, 'btnClose click');
         };
 
         // moved from template to fix issue #2280
@@ -120,7 +129,7 @@ angular.module('ui.bootstrap._modal', ['ui.bootstrap.multiMap', 'ui.bootstrap.st
 
         modalRenderDeferObj.promise.then(function() {
           var animationPromise = null;
-
+          
           if (attrs.modalInClass) {
             animationPromise = $animateCss(element, {
               addClass: attrs.modalInClass
@@ -172,7 +181,7 @@ angular.module('ui.bootstrap._modal', ['ui.bootstrap.multiMap', 'ui.bootstrap.st
     return {
       compile: function(tElement, tAttrs) {
         if (tAttrs.modalAnimation) {
-          tElement.addClass(tAttrs.uiModalAnimationClass);
+            tElement.addClass(tAttrs.uiModalAnimationClass);
         }
       }
     };
@@ -479,8 +488,10 @@ angular.module('ui.bootstrap._modal', ['ui.bootstrap.multiMap', 'ui.bootstrap.st
           'animate': 'animate',
           'ng-style': '{\'z-index\': 1050 + $$topModalIndex*10, display: \'block\'}',
           'tabindex': -1,
-          'ui-modal-animation-class': 'fade',
-          'modal-in-class': 'in'
+          'ui-modal-animation-class': modal.animate&&(modal.animate!='fade') ? modal.animate+' fade' : 'fade',
+          'modal-in-class': 'in',
+          'close-btn': modal.closeBtn,
+          'position': modal.position
         }).append(content);
         if (modal.windowClass) {
           angularDomEl.addClass(modal.windowClass);
@@ -677,14 +688,14 @@ angular.module('ui.bootstrap._modal', ['ui.bootstrap.multiMap', 'ui.bootstrap.st
           };
 
           $modal.open = function(modalOptions) {
-            var modalResultDeferred = $q.defer();
+            var modalResultDeferred = $q.defer();/*异步执行体中使用它发送信息,pormise接受执行相应的回调函数*/
             var modalOpenedDeferred = $q.defer();
             var modalClosedDeferred = $q.defer();
             var modalRenderDeferred = $q.defer();
 
             //prepare an instance of a modal to be injected into controllers and returned to a caller
             var modalInstance = {
-              result: modalResultDeferred.promise,
+              result: modalResultDeferred.promise,/*回调执行体*/
               opened: modalOpenedDeferred.promise,
               closed: modalClosedDeferred.promise,
               rendered: modalRenderDeferred.promise,
@@ -758,7 +769,11 @@ angular.module('ui.bootstrap._modal', ['ui.bootstrap.multiMap', 'ui.bootstrap.st
                   ariaDescribedBy: modalOptions.ariaDescribedBy,
                   size: modalOptions.size,
                   openedClass: modalOptions.openedClass,
-                  appendTo: modalOptions.appendTo
+                  appendTo: modalOptions.appendTo,
+
+                  closeBtn: modalOptions.closeBtn,
+                  position: modalOptions.position,
+                  animate: modalOptions.animate
                 };
 
                 var component = {};

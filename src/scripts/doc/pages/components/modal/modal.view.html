@@ -1,3 +1,389 @@
- <button type="button" class="btn btn-primary" ng-click="vm.open('sm')">Open me!</button>
-  <button type="button" class="btn btn-primary" ng-click="vm.open('md')">Open me!</button>
-   <button type="button" class="btn btn-primary" ng-click="vm.open('lg')">Open me!</button>
+<div class="page-main" ui-syntax-highlighter>
+    <header class="page-header clearfix">
+        <h2><i class="fa fa-puzzle-piece"></i>模态框</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="#">Web组件</a>
+            </li>
+            <li class="active">
+                <strong>模态框</strong>
+            </li>
+        </ol>
+    </header>
+    <section>
+        <!-- 基本使用 -->
+        <ui-panel>
+            <ui-panel-heading><h3>1. 基本使用</h3></ui-panel-heading>
+            <ol>
+                <li>创建模态框模版</li>
+                <li>创建模态框控制器(如: <code>ModalCtrl</code>)</li>
+                <li>注入<code>$model</code>服务，调用<code>$model.open(options)</code>方法，返回<code>modalInstance</code>实例</li>
+                <li><code>modalInstance.result.then()</code>绑定成功回调事件；<code>modalInstance.result.catch()</code>绑定失败回调事件</li>
+                <li>创建模态框实例控制器(如: <code>ModalInstanceCtrl</code>)</li>
+                <li>注入<code>$modalInstance</code>，调用<code>$model.close()</code>方法触发<code>ModalCtrl</code>中的成功回调事件；调用<code>$model.dismiss()</code>方法触发<code>ModalCtrl</code>中的失败回调事件；</li>
+            </ol>
+            <div class="note">
+                <h4><code>ModalCtrl</code> 和 <code>ModalInstanceCtrl</code>之间进行数据交互</h4>
+                <p>通过<code>$model.open(options)</code>中options配置<code>resolve</code>属性传递数据：</p>
+                <ol>
+                    <li><code>ModalCtrl</code>: 在resolve中添加需要传递的<code>object</code>成员</li>
+                    <li><code>ModalInstanceCtrl</code>: 将所创建的<code>object</code>的key注入</li>
+                </ol>
+            </div>
+            <p>
+                <button type="button" class="btn btn-default" ng-click="vm.open()">点击我</button>
+                <button type="button" class="btn btn-default" ng-click="vm.open('lg')">大号模态框</button>
+                <button type="button" class="btn btn-default" ng-click="vm.open('sm')">小号</button>
+                <div ng-show="vm.selectedItem">模态框中所选的项: {{ vm.selectedItem }}</div>
+            </p>
+        </ui-panel>
+        <ui-panel class="no-padding">
+            <ui-tabset>
+                <ui-tab>
+                    <ui-tab-heading>HTML</ui-tab-heading>
+                    <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                        <button type="button" class="btn btn-default" ng-click="open()">点击我</button>
+                        <button type="button" class="btn btn-default" ng-click="open('lg')">大号模态框</button>
+                        <button type="button" class="btn btn-default" ng-click="open('sm')">小号</button>
+                        <div ng-show="selected">模态框中所选的项: {{ selected }}</div>
+                    ]]></script>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>Modal template HTML</ui-tab-heading>
+                    <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                        <div class="modal-header">
+                            <h3 class="modal-title">弹出框标题</h3>
+                        </div>
+                        <div class="modal-body">
+                            <ul>
+                                <li ng-repeat="item in items">
+                                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                                </li>
+                            </ul>
+                            <p>所选项: <b>{{ selected.item }}</b></p>
+                            <p><button ng-click="addItems()" type="button" class="btn btn-primary">添加选项</button></p>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="button" ng-click="ok()">确定</button>
+                            <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+                        </div>
+                    ]]></script>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>Controller</ui-tab-heading>
+                    <script type="syntaxhighlighter" class="brush: jscript"><![CDATA[
+                        class Controller {
+                            constructor($scope, $uiModal, $log) {
+                                "ngInject";
+
+                                $scope.items = ['item1', 'item2', 'item3'];
+                                $scope.open = function(size, animate, position) {
+                                    var modalInstance = $uiModal.open({
+                                        templateUrl: templateUrl,
+                                        controller: ControllerInstance,
+                                        size: size,
+                                        position: position,
+                                        animate: animate,
+                                        resolve: {
+                                            items: function() {
+                                                return $scope.items;
+                                            }
+                                        }
+                                    });
+
+                                    modalInstance.result.then(function(selectedItem) {
+                                        $scope.selected = selectedItem;
+                                    }).catch(function() {
+                                        $log.info('Modal dismissed at: ' + new Date());
+                                    });
+                                };
+                            }
+                        }
+
+                        class ControllerInstance {
+                            constructor($scope, $modalInstance, items, $timeout) {
+                                "ngInject";
+                                
+                                $scope.items = items;
+                                $scope.selected = {
+                                    item: $scope.items[0]
+                                };
+
+                                $scope.ok = function () {
+                                    $modalInstance.close($scope.selected.item);
+                                };
+
+                                $scope.cancel = function () {
+                                    $modalInstance.dismiss('cancel');
+                                };
+
+                                $scope.addItems = function() {
+                                    $scope.items = $scope.items.concat(['item4', 'item5', 'item6', 'item7', 'item8', 'item9', 'item10', 'item11', 'item12']);
+                                    $modalInstance.resize();
+                                }
+                            }
+                        }
+                    ]]></script>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+
+        <!-- 动画效果 -->
+        <ui-panel>
+            <ui-panel-heading><h3>2. 动画效果</h3></ui-panel-heading>
+            <p>在<code>$model.open(options)</code>中的<code>options</code>参数中传入<code>animate</code>属性对动画效果进行配置。</p>
+            <ul>
+                <li><code>fade</code>: 淡出效果(默认)</li>
+                <li><code>scale</code>: 缩放效果</li>
+                <li><code>shake</code>: 弹簧效果</li>
+            </ul>
+            <hr />
+            <p>
+                <button type="button" class="btn btn-default" ng-click="vm.open('md', 'fade')">淡出效果</button>
+                <button type="button" class="btn btn-default" ng-click="vm.open('md', 'scale')">缩放效果</button>
+                <button type="button" class="btn btn-default" ng-click="vm.open('md', 'shake')">弹簧效果</button>
+            </p>
+        </ui-panel>
+        <ui-panel class="no-padding">
+            <ui-tabset>
+                <ui-tab>
+                    <ui-tab-heading>HTML</ui-tab-heading>
+                    <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                        <button type="button" class="btn btn-default" ng-click="open('md', 'fade')">淡出效果</button>
+                        <button type="button" class="btn btn-default" ng-click="open('md', 'scale')">缩放效果</button>
+                        <button type="button" class="btn btn-default" ng-click="open('md', 'shake')">弹簧效果</button>
+                    ]]></script>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+
+
+        <!-- 设置模态框位置 -->
+        <ui-panel>
+            <ui-panel-heading><h3>3. 设置模态框位置</h3></ui-panel-heading>
+            <p>在<code>$model.open(options)</code>中的<code>options</code>参数中传入<code>position</code>属性对模态框位置进行配置。</p>
+            <ul>
+                <li><code>middle</code>: 垂直居中</li>
+                <li><code>top</code>: 显示在页面顶端(默认)</li>
+            </ul>
+            <hr />
+            <p>
+                <button type="button" class="btn btn-default" ng-click="vm.open('md', 'fade', 'middle')">垂直居中</button>
+                <button type="button" class="btn btn-default" ng-click="vm.open('md', 'fade')">显示在页面顶端</button>
+            </p>
+        </ui-panel>
+        <ui-panel class="no-padding">
+            <ui-tabset>
+                <ui-tab>
+                    <ui-tab-heading>HTML</ui-tab-heading>
+                    <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                        <button type="button" class="btn btn-default" ng-click="open('md', 'fade')">垂直居中</button>
+                        <button type="button" class="btn btn-default" ng-click="open('md', 'fade', 'top')">显示在页面顶端</button>
+                    ]]></script>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+
+
+        <!-- 设置模态框位置 -->
+        <ui-panel>
+            <ui-panel-heading><h3>4. 重置模态框高度</h3></ui-panel-heading>
+            <p>调用模态框controller中的<code>$modalInstance.resize()</code>方法重置模态框大小。</p>
+            <p>
+                <button type="button" class="btn btn-default" ng-click="vm.open('md', 'fade')">打开模态框后点击"添加选项"</button>
+            </p>
+        </ui-panel>
+
+        <!-- open(options) 参数 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>5. open(options) 参数</h3></ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>属性名</th>
+                        <th>默认值</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>templateUrl</code></td>
+                        <td>null</td>
+                        <td>模态框中内容。建议使用bootstrap模态框样式，<code>modal-header</code>, <code>modal-body</code>, <code>modal-footer</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>template</code></td>
+                        <td>null</td>
+                        <td>在该属性值中直接传入html标签。</td>
+                    </tr>
+                    <tr>
+                        <td><code>scope</code></td>
+                        <td>rootScope</td>
+                        <td>设置模态框的scope。默认为<code>rootScope</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>controller</code></td>
+                        <td>null</td>
+                        <td>模态框实例控制器的名称</td>
+                    </tr>
+                    <tr>
+                        <td><code>controllerAs</code></td>
+                        <td>null</td>
+                        <td>定义<code>controller-as</code>名称</td>
+                    </tr>
+                    <tr>
+                        <td><code>resolve</code></td>
+                        <td>null</td>
+                        <td>resolve中所添加的对象成员可注入到controller中，用于数据交互</td>
+                    </tr>
+                    <tr>
+                        <td><code>backdrop</code></td>
+                        <td>true</td>
+                        <td>是否显示遮罩层</td>
+                    </tr>
+                    <tr>
+                        <td><code>keyboard</code></td>
+                        <td>true</td>
+                        <td>是否开启键盘按钮 <kbd>esc</kbd> 关闭模态框</td>
+                    </tr>
+                    <tr>
+                        <td><code>backdropClass</code></td>
+                        <td>null</td>
+                        <td>为遮罩层添加class</td>
+                    </tr>
+                    <tr>
+                        <td><code>windowClass</code></td>
+                        <td>null</td>
+                        <td>为模态框添加class</td>
+                    </tr>
+                    <tr>
+                        <td><code>windowTemplateUrl</code></td>
+                        <td>null</td>
+                        <td>自定义模态框模版。注意：不同于<code>templateUrl</code>，后者指的是模态框中的内容模版</td>
+                    </tr>
+                    <tr>
+                        <td><code>size</code></td>
+                        <td>md</td>
+                        <td>为模态框添加尺寸的class。如：传入lg，class为<code>modal-lg</code>。boostrap中预设的值有: <code>lg</code>, <code>sm</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>position</code></td>
+                        <td>middle</td>
+                        <td>设置模态框显示位置。可选值: <code>middle</code>(默认), <code>top</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>animate</code></td>
+                        <td>fade</td>
+                        <td>设置模态框动画效果。可选动画效果: <code>fade</code>(默认), <code>scale</code>, <code>shake</code> </td>
+                    </tr>
+                    <tr>
+                        <td><code>openedClass</code></td>
+                        <td>modal-open</td>
+                        <td>模态框显示后在<code>body</code>中添加class。默认为<code>modal-open</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+
+        <!-- 实例方法和事件 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>6. 实例的方法和事件</h3></ui-panel-heading>
+            <p><code>$modal.open()</code>所创建的实例包含以下方法</p>
+            <table class="table margin-top-20">
+                <thead>
+                    <tr>
+                        <th>方法名</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>close(result)</td>
+                        <td>成功关闭模态框。通过result参数传递成功结果。</td>
+                    </tr>
+                    <tr>
+                        <td>dismiss(reason)</td>
+                        <td>取消模态框。通过reason参数传递失败或取消结果。</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><code>$modal.open()</code>所创建的实例包含以下promise事件</p>
+            <table class="table margin-top-20">
+                <thead>
+                    <tr>
+                        <th>方法名</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>result</td>
+                        <td>当模态框关闭后回调该promise事件</td>
+                    </tr>
+                    <tr>
+                        <td>opened</td>
+                        <td>当模态框打开后回调该promise事件</td>
+                    </tr>
+                    <tr>
+                        <td>rendered</td>
+                        <td>当模态框渲染完成后回调该promise事件</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+
+        <!-- 实例控制器中的事件 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>7. 实例控制器中的事件</h3></ui-panel-heading>
+            <p>注意：实例<code>$modalInstance</code>需要注入</p>
+            <table class="table margin-top-20">
+                <thead>
+                    <tr>
+                        <th>方法名</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>$modalInstance.close(result)</td>
+                        <td>成功关闭模态框。通过result参数传递成功结果。</td>
+                    </tr>
+                    <tr>
+                        <td>$modalInstance.dismiss(reason)</td>
+                        <td>取消模态框。通过reason参数传递失败或取消结果。</td>
+                    </tr>
+                    <tr>
+                        <td>$modalInstance.resize()</td>
+                        <td>重置模态框高度。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+
+        <!-- 全局配置 -->
+        <ui-panel>
+            <ui-panel-heading><h3>8. 全局配置</h3></ui-panel-heading>
+            <p>常量名: <code>uiModalConfig</code></p>
+            <table class="table margin-top-20">
+                <thead>
+                    <tr>
+                        <th>属性名</th>
+                        <th>默认值</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>position</td>
+                        <td>middle</td>
+                        <td>设置模态框显示位置。可选值: <code>middle</code>(默认), <code>top</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+    </section>
+</div>

@@ -1,0 +1,83 @@
+.modal {
+
+    &.scale {
+        .modal-dialog {
+            @include vendor(transform, scale(0));
+        }
+        
+        &.in {
+            .modal-dialog {
+                @include vendor(transform, scale(1));
+                @include vendor(animation, modal-scale 0.3s);
+        
+            }
+        }
+    }
+
+    &.shake {
+        .modal-dialog {
+            @include vendor(transform, scale(0));
+        }
+        
+        &.in {
+            .modal-dialog {
+                @include vendor(transform, scale(1));
+                @include vendor(animation, modal-shake 0.3s);
+            }
+        }
+    }
+
+    @include keyframes('modal-scale') {
+        0% {
+            @include vendor(transform, scale(0));
+        }
+
+        100% {
+            @include vendor(transform, scale(1));
+        }
+    }
+
+    @include keyframes('modal-shake') {
+        0% {
+            @include vendor(transform, scale(0.7));
+        }
+
+        45% {
+            @include vendor(transform, scale(1.05));
+        }
+
+        80% {
+            @include vendor(transform, scale(0.95));
+        }
+
+        100% {
+            @include vendor(transform, scale(1));
+        }
+    }
+
+
+    .modal-dialog {
+
+        &.modal-middle {
+           margin-top: 13%; 
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            z-index: 1000;
+            cursor: pointer;
+            
+            &:hover {
+                color: #C5c5c5;
+            }
+        }
+
+    }
+
+}
+
+
+

@@ -1,0 +1,172 @@
+<div class="page-main" ui-syntax-highlighter>
+    <header class="page-header clearfix">
+        <h2><i class="fa fa-puzzle-piece"></i>弹出对话框</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="#">Web组件</a>
+            </li>
+            <li class="active">
+                <strong>弹出对话框</strong>
+            </li>
+        </ol>
+    </header>
+    <section>
+        <!-- 基本使用 -->
+        <ui-panel>
+            <ui-panel-heading><h3>1. 基本使用</h3></ui-panel-heading>
+            <div class="note">该组件继承自<a href="#/components/modal">uiModal</a></div>
+            <p>调用<code>uiAlert</code>服务，弹出对话框。</p>
+            <p><code>uiAlert</code>提供以下几种方法：</p>
+            <ul>
+                <li>确认框: <code>uiAlert.confirm(title)</code></li>
+                <li>通知框: <code>uiAlert.info(title)</code></li>
+                <li>成功框: <code>uiAlert.success(title)</code></li>
+                <li>警告框: <code>uiAlert.warning(title)</code></li>
+                <li>错误框: <code>uiAlert.error(title)</code></li>
+                <li>输入框: <code>uiAlert.prompt(title)</code></li>
+            </ul>
+            <p>以上方法返回值均为<code>promise</code>类型，可以通过<code>.then()</code>方法回调成功事件，通过<code>.catch()</code>方法调用失败事件。</p>
+            <p>注意：<code>uiAlert</code>为Provider服务，使用时需要依赖注入。</p>
+            <div class="example margin-top-20">
+                <button class="btn btn-lg btn-primary" ng-click="vm.alertConfirm()">弹出确认框</button>
+                <span ng-bind="alertConfirmText"></span>
+            </div>
+            <div class="example-code margin-top-30">
+                <script type="syntaxhighlighter" class="brush: jscript"><![CDATA[
+                    uiAlert.confirm('确定操作吗？').then(function(content) {
+                        this.alertConfirmText = '已确定';
+                    }).catch(function() {
+                        this.alertConfirmText = '已取消';
+                    });
+                ]]></script>
+            </div>
+
+            <div class="example margin-top-20">
+                <button class="btn btn-lg btn-info" ng-click="vm.alertInfo()">弹出通知框</button>
+            </div>
+            <div class="example-code margin-top-30">
+                <script type="syntaxhighlighter" class="brush: jscript"><![CDATA[
+                    uiAlert.info('操作已完成');
+                ]]></script>
+            </div>
+
+            <div class="example margin-top-20">
+                <button class="btn btn-lg btn-success" ng-click="vm.alertSuccess()">弹出成功框</button>
+            </div>
+            <div class="example-code margin-top-30">
+                <script type="syntaxhighlighter" class="brush: jscript"><![CDATA[
+                    uiAlert.success('操作成功！');
+                ]]></script>
+            </div>
+
+            <div class="example margin-top-20">
+                <button class="btn btn-lg btn-warning" ng-click="vm.alertWarning()">弹出警告框</button>
+                <span ng-bind="alertWarningText"></span>
+            </div>
+            <div class="example-code margin-top-30">
+                <script type="syntaxhighlighter" class="brush: jscript"><![CDATA[
+                    uiAlert.warning('此操作不可恢复，确定吗?').then(function(content) {
+                        this.alertWarningText = '已确定';
+                    }).catch(function() {
+                        this.alertWarningText = '已取消';
+                    });
+                ]]></script>
+            </div>
+
+            <div class="example margin-top-20">
+                <button class="btn btn-lg btn-danger" ng-click="vm.alertError()">弹出错误框</button>
+            </div>
+            <div class="example-code margin-top-30">
+                <script type="syntaxhighlighter" class="brush: jscript"><![CDATA[
+                    uiAlert.error('操作失败！');
+                ]]></script>
+            </div>
+
+            <div class="example margin-top-20">
+                <button class="btn btn-lg btn-primary" ng-click="vm.alertPrompt()">弹出输入对话框框</button>
+                <span ng-bind="alertPromptText"></span>
+            </div>
+            <div class="example-code margin-top-30">
+                <script type="syntaxhighlighter" class="brush: jscript"><![CDATA[
+                    uiAlert.prompt('您的姓名?').then(function(name) {
+                        $scope.alertPromptText = '您的姓名:' + name;
+                    });
+                ]]></script>
+            </div>
+        </ui-panel>
+
+
+        <!-- 参数 -->
+        <ui-panel>
+            <ui-panel-heading><h3>2. 参数</h3></ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="30%">参数名</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>title</code></td>
+                        <td>string</td>
+                        <td></td>
+                        <td>标题</td>
+                    </tr>
+                    <tr>
+                        <td><code>settings</code></td>
+                        <td>object</td>
+                        <td></td>
+                        <td>
+                            confirmText: 确认按钮的文字，如果传<code>false</code>或空则隐藏该按钮,<br/>
+                            cancelText: 取消按钮的文字，如果传<code>false</code>或空则隐藏该按钮,<br/>
+                            backdrop: 是否允许点击遮罩层关闭弹窗,<br/>
+                            backdropClass: 为遮罩层添加class,<br/>
+                            windowClass: 为弹出框添加class<br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+
+        <!-- 方法 -->
+        <ui-panel>
+            <ui-panel-heading><h3>3. 方法</h3></ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="30%">方法名</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>uiAlert.confirm()</code></td>
+                        <td>确认框</td>
+                    </tr>
+                    <tr>
+                        <td><code>uiAlert.success()</code></td>
+                        <td>成功框</td>
+                    </tr>
+                    <tr>
+                        <td><code>uiAlert.warning()</code></td>
+                        <td>警告框</td>
+                    </tr>
+                    <tr>
+                        <td><code>uiAlert.error()</code></td>
+                        <td>错误框</td>
+                    </tr>
+                    <tr>
+                        <td><code>uiAlert.prompt()</code></td>
+                        <td>输入框，输入框的结果通过.then()回调事件中的参数返回。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+    </section>
+</div>

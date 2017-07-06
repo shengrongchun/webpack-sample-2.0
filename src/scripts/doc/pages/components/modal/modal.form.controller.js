@@ -7,10 +7,12 @@ class modalController {
 
         this.items = items;
 
+        this.selected = {};
+
     }
 
     ok() {
-        this.$uiModalInstance.close(this.selected.item);
+        this.$uiModalInstance.close(this.selected.item?this.selected.item:null);
     }
 
     cancel() {

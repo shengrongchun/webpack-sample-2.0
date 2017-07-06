@@ -3,14 +3,17 @@ import '../../styles/src_ui_css';
 
 /*页面的加载*/
 const dependencies = [
-
+    'ngAnimate',
     'ui.bootstrap',
     'ui.bootstrap._tabs',
     'ui.bootstrap._accordion',
     'ui.bootstrap._dropdown',
-    'ui.bootstrap._modal'
+    'ui.bootstrap._modal',
+    'ui.bootstrap._tooltip',
+    'ui.bootstrap._popover',
 
-    ];
+
+];
 
 
 /*创建应用*/

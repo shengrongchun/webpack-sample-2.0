@@ -1,0 +1,62 @@
+<div ng-switch="alert.type">
+    <div ng-switch-when="confirm">
+        <div class="modal-header">
+            <h4 class="modal-title"><i class="alert-icon alert-icon-confirm fa fa-question-circle"></i> {{alert.title}}</h4>
+        </div>
+        <div class="modal-body">
+            <button ng-if="options.confirmText" type="button" class="btn btn-primary" ng-click="save()">{{options.confirmText}}</button>
+            <button ng-if="options.cancelText" type="button" class="btn btn-default" ng-click="cancel()">{{options.cancelText}}</button>
+        </div>
+    </div>
+
+    <div ng-switch-when="success">
+        <div class="modal-header">
+            <h4 class="modal-title"><i class="alert-icon alert-icon-success fa fa-check-circle"></i> {{alert.title}}</h4>
+        </div>
+        <div class="modal-body">
+            <button ng-if="options.confirmText" type="button" class="btn btn-default" ng-click="save()">{{options.confirmText}}</button>
+        </div>
+    </div>
+
+    <div ng-switch-when="info">
+        <div class="modal-header">
+            <h4 class="modal-title"><i class="alert-icon alert-icon-confirm fa fa-info-circle"></i> {{alert.title}}</h4>
+        </div>
+        <div class="modal-body">
+            <button ng-if="options.confirmText" type="button" class="btn btn-default" ng-click="save()">{{options.confirmText}}</button>
+        </div>
+    </div>
+
+    <div ng-switch-when="warning">
+        <div class="modal-header">
+            <h4 class="modal-title"><i class="alert-icon alert-icon-warning fa fa-exclamation-triangle"></i> {{alert.title}}</h4>
+        </div>
+        <div class="modal-body">
+            <button ng-if="options.confirmText" type="button" class="btn btn-warning" ng-click="save()">{{options.confirmText}}</button>
+            <button ng-if="options.cancelText" type="button" class="btn btn-default" ng-click="cancel()">{{options.cancelText}}</button>
+        </div>
+    </div>
+
+    <div ng-switch-when="error">
+        <div class="modal-header">
+            <h4 class="modal-title"><i class="alert-icon alert-icon-error fa fa-exclamation-circle"></i> {{alert.title}}</h4>
+        </div>
+        <div class="modal-body">
+            <button ng-if="options.confirmText" type="button" class="btn btn-default" ng-click="save()">{{options.confirmText}}</button>
+        </div>
+    </div>
+
+    <div ng-switch-when="prompt">
+        <div class="modal-header">
+            <h4 class="modal-title">{{alert.title}}</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-inline">
+                <form name="prompt" novalidate ng-submit="savePrompt()">
+                    <input type="text" ng-model="alert.content" class="form-control" required />
+                    <button ng-if="options.confirmText" type="submit" class="btn btn-default">{{options.confirmText}}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="page-main" ui-syntax-highlighter>
+    <header class="page-header clearfix">
+        <h2><i class="fa fa-puzzle-piece"></i>面板</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="#">Web组件</a>
+            </li>
+            <li class="active">
+                <strong>面板</strong>
+            </li>
+        </ol>
+    </header>
+    <section>
+        <!-- 静态内容 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading>
+                <h3>1. 基本使用</h3>
+            </ui-panel-heading>
+            <p>下面例子演示了面板组件的使用方式。</p>
+        </ui-panel>
+        <!--使用heading属性设置标题-->
+        <ui-panel heading="面板标题">
+            面板内容
+        </ui-panel>
+        <!--使用ui-panel-heading标签设置标题-->
+        <ui-panel>
+            <ui-panel-heading><h4><i class="fa fa-magic"></i> 带图标的标题</h4></ui-panel-heading>
+            面板内容
+        </ui-panel>
+        <!--含边框的panel-->
+        <ui-panel border="true">
+            <ui-panel-heading><h4>含边框的面板</h4></ui-panel-heading>
+            面板内容
+        </ui-panel>
+        <!--不含阴影的panel-->
+        <ui-panel shadow="false">
+            <ui-panel-heading><h4>不含阴影的面板</h4></ui-panel-heading>
+            面板内容
+        </ui-panel>
+        <ui-panel panel-toolbar="false">
+            <div class="example-code">
+                <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
+                    <!--使用heading属性设置标题-->
+                    <ui-panel heading="面板标题">
+                        面板内容
+                    </ui-panel>
+                    
+                    <!--使用ui-panel-heading标签设置标题-->
+                    <ui-panel>
+                        <ui-panel-heading><h4><i class="fa fa-magic"></i> 带图标的标题</h4></ui-panel-heading>
+                        面板内容
+                    </ui-panel>
+                ]]></script>
+            </div>
+        </ui-panel>
+
+        <!-- ui-panel -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading>
+                <h3>2. &lt;ui-panel&gt; 属性</h3>
+            </ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>属性</th>
+                        <th>默认值</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>heading</code> 或 <code>&lt;ui-panel-heading&gt;</code></td>
+                        <td>null</td>
+                        <td>使用<code>heading</code>属性设置面板标题，或使用html标签<code>&lt;ui-panel-heading&gt;</code>进行设置。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+    </section>
+</div>

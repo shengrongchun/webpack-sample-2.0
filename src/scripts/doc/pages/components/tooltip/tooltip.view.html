@@ -1,0 +1,198 @@
+<div class="page-main" ui-syntax-highlighter>
+    <header class="page-header clearfix">
+        <h2><i class="fa fa-puzzle-piece"></i>提示</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="#">Web组件</a>
+            </li>
+            <li class="active">
+                <strong>提示</strong>
+            </li>
+        </ol>
+    </header>
+    <section>
+        <!-- 基本使用 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>1. 基本使用</h3></ui-panel-heading>
+            <p>将<code>ui-tooltip</code>属性添加到<code>&lt;button&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;span&gt;</code> 等，为元素添加提示效果。</p>
+            <div class="example margin-top-20">
+                <button class="btn btn-lg btn-primary" ui-tooltip="提示信息">把鼠标挪到我身上试试</button>
+            </div>
+            <div class="example-code">
+                <pre name="code" class="brush: xml">
+                    <button class="btn btn-lg btn-primary" ui-tooltip="提示信息">把鼠标挪到我身上试试</button>
+                </pre>
+            </div>
+        </ui-panel>
+
+        <!-- 位置 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>2. 显示位置</h3></ui-panel-heading>
+            <p>添加<code>ui-tooltip-placement</code>属性，设置提示框显示位置，可选值为<code>left</code>, <code>right</code>, <code>top</code>, <code>bottom</code></p>
+            <div class="example margin-top-20 clearfix">
+                <button class="btn btn-lg btn-primary pull-left margin-left-5" ui-tooltip-placement="left" ui-tooltip="我在左面">左面</button>
+                <button class="btn btn-lg btn-primary pull-left margin-left-5" ui-tooltip-placement="right" ui-tooltip="我在右面">右面</button>
+                <button class="btn btn-lg btn-primary pull-left margin-left-5" ui-tooltip-placement="top" ui-tooltip="我在上面">上面</button>
+                <button class="btn btn-lg btn-primary pull-left margin-left-5" ui-tooltip-placement="bottom" ui-tooltip="我在下面">下面</button>
+            </div>
+            <div class="example-code">
+                <pre name="code" class="brush: xml">
+                    <button class="btn btn-lg btn-primary" ui-tooltip-placement="left" ui-tooltip="我在左面" ui-tooltip-trigger="click">左面</button>
+                    <button class="btn btn-lg btn-primary" ui-tooltip-placement="right" ui-tooltip="我在右面" ui-tooltip-trigger="click">右面</button>
+                    <button class="btn btn-lg btn-primary" ui-tooltip-placement="top" ui-tooltip="我在上面" ui-tooltip-trigger="click">上面</button>
+                    <button class="btn btn-lg btn-primary" ui-tooltip-placement="bottom" ui-tooltip="我在下面" ui-tooltip-trigger="click">下面</button>
+                </pre>
+            </div>
+        </ui-panel>
+
+        <!-- 触发事件 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>3. 触发事件</h3></ui-panel-heading>
+            <table class="table margin-top-20">
+                <thead>
+                    <tr>
+                        <th>显示触发事件</th>
+                        <th>隐藏触发事件</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>mouseenter</code></td>
+                        <td><code>mouseleave</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>click</code></td>
+                        <td><code>click</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>focus</code></td>
+                        <td><code>blur</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>none</code></td>
+                        <td><code>''</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="example margin-top-20 clearfix">
+                <button class="btn btn-lg btn-primary pull-left margin-left-5" ui-tooltip="提示信息" ui-tooltip-trigger="focus">点了我显示提示，再点空白处隐藏提示</button>
+            </div>
+            <div class="example-code">
+                <pre name="code" class="brush: xml">
+                    <button class="btn btn-lg btn-primary pull-left" ui-tooltip="提示信息" ui-tooltip-trigger="click">点了我显示提示，再点我隐藏提示</button>
+                    <button class="btn btn-lg btn-primary pull-left" ui-tooltip="提示信息" ui-tooltip-trigger="focus">点了我显示提示，再点空白处隐藏提示</button>
+                </pre>
+            </div>
+        </ui-panel>
+
+        <!-- 支持html的提示框 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>4. 支持html的提示框</h3></ui-panel-heading>
+            <div class="example margin-top-20 clearfix">
+                <button class="btn btn-lg btn-primary pull-left" ui-tooltip-html="vm.htmlTooltip">我的内容支持html</button>
+                <button class="btn btn-lg btn-primary pull-left margin-left-5" ui-tooltip-placement="right" ui-tooltip-template="'src/scripts/doc/pages/components/tooltip/tooltip.tpl.html'">我的内容支持模版</button>
+            </div>
+        </ui-panel>
+        <ui-panel class="no-padding" panel-toolbar="false">
+            <ui-tabset>
+                <ui-tab>
+                    <ui-tab-heading>HTML</ui-tab-heading>
+                    <pre name="code" class="brush: xml">
+                        <button class="btn btn-lg btn-primary pull-left" ui-tooltip-html="vm.htmlTooltip">我的内容支持html</button>
+                        <button class="btn btn-lg btn-primary pull-left" ui-tooltip-template="'scripts/demo/pages/components/tooltip/tooltip.tpl.html'">我的内容支持模版</button>
+                    </pre>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>Controller</tab-heading>
+                    <pre name="code" class="brush: jscript">
+                        // 需要使用$sce.trustAsHtml()方法对html进行转换
+                        $scope.htmlTooltip = $sce.trustAsHtml('<em>我是斜体</em>, <b>我是粗体</b>');
+                    </pre>
+                </ui-tab>
+                <ui-tab>
+                    <tab-heading>Template</tab-heading>
+                    <pre name="code" class="brush: xml">
+                        <div>
+                            <p><b>我来自模版。</b><em>我可以显示斜体</em></p>
+                            <p><b>我可以显示粗体</b></p>
+                        </div>
+                    </pre>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+
+        <!-- 属性 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>3. 属性</h3></ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>属性名</th>
+                        <th>默认值</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>ui-tooltip</code></td>
+                        <td>null</td>
+                        <td>提示框的文字内容。会自动转义其中的html，如果需要包含html，请使用<code>tooltip-template</code> 或 <code>tooltip-html</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>ui-tooltip-template</code></td>
+                        <td>null</td>
+                        <td>使用模版显示提示框内容。注意：模版中需要有一个根元素包裹其中的内容。</td>
+                    </tr>
+                    <tr>
+                        <td><code>ui-tooltip-html</code></td>
+                        <td>null</td>
+                        <td>绑定提示框的内容，支持html。注意：传入的值为$scope中的变量名，并且需要通过$sce.trustAsHtml()方法进行转换。</td>
+                    </tr>
+                    <tr>
+                        <td><code>ui-tooltip-placement</code></td>
+                        <td>top</td>
+                        <td>提示框的显示位置。可选值: <code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>ui-tooltip-animation</code></td>
+                        <td>true</td>
+                        <td>是否使用动画淡入(淡出)显示(隐藏)提示框</td>
+                    </tr>
+                    <tr>
+                        <td><code>ui-tooltip-popup-delay</code></td>
+                        <td>0</td>
+                        <td>延迟显示提示框</td>
+                    </tr>
+                    <tr>
+                        <td><code>ui-tooltip-trigger</code></td>
+                        <td>mouseenter</td>
+                        <td>触发方式。可选值: <code>mouseenter</code>, <code>focus</code>, <code>click</code>, <code>none</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>ui-tooltip-enable</code></td>
+                        <td>null</td>
+                        <td>是否启用提示组件</td>
+                    </tr>
+                    <tr>
+                        <td><code>ui-tooltip-append-to-body</code></td>
+                        <td>false</td>
+                        <td>是否将提示框的代码插入<code>&lt;body&gt;</code>中。默认插入到当前元素的父级元素中。用于处理提示框所在容器<code>overflow:hidden</code>情况。</td>
+                    </tr>
+                    <tr>
+                        <td><code>ui-tooltip-is-open</code></td>
+                        <td>false</td>
+                        <td>是否默认打开提示框</td>
+                    </tr>
+                    <tr>
+                        <td><code>ui-tooltip-class</code></td>
+                        <td>null</td>
+                        <td>使用自定义class</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+    </section>
+</div>

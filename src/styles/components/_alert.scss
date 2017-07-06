@@ -1,0 +1,47 @@
+.alert-dialog {
+    .modal-dialog {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        margin: -62px 0 0 -200px;
+        text-align: center;
+
+        .modal-title {
+            margin-top: 7px;
+        }
+
+        .alert-icon {
+            font-size: 30px;
+            height: 37px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .alert-icon-confirm {
+            color: $primary-bg;
+        }
+
+        .alert-icon-success {
+            color: $success-bg;
+        }
+
+        .alert-icon-warning {
+            color: $warning-bg;
+        }
+
+        .alert-icon-error {
+            color: $danger-bg;
+        }
+
+        button {
+            margin: 0 5px;
+        }
+    }
+
+    &.alert-dialog-with-icon {
+        .modal-dialog {
+            margin-top: -100px;
+        }
+    }
+}

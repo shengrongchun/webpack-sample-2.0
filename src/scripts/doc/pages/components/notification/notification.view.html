@@ -1,0 +1,289 @@
+<div class="page-main" ui-syntax-highlighter>
+    <header class="page-header clearfix">
+        <h2><i class="fa fa-puzzle-piece"></i>通知消息</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="#">Web组件</a>
+            </li>
+            <li class="active">
+                <strong>通知消息</strong>
+            </li>
+        </ol>
+    </header>
+    <section>
+        <!-- 基本使用 -->
+        <ui-panel>
+            <ui-panel-heading><h3>1. 基本使用</h3></ui-panel-heading>
+            <p>调用<code>uiNotification</code>服务，在页面角落上显示通知消息。</p>
+            <p>注意：<code>uiNotification</code>为Provider服务，使用时需要依赖注入。</p>
+            <div class="example margin-top-20">
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>标题: </label>
+                        <input class="form-control" type="text" ng-model="options.title" />
+                        {{title}}
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>消息内容: </label>
+                        <input class="form-control" type="text" ng-model="options.message" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>横向位置: </label>
+                        <select class="form-control" ng-model="options.positionX">
+                            <option value="right">右</option>
+                            <option value="center">中间</option>
+                            <option value="left">左</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>纵向位置: </label>
+                        <select class="form-control" ng-model="options.positionY">
+                            <option value="top">上</option>
+                            <option value="bottom">下</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>显示时长: </label>
+                        <input class="form-control" type="text" ng-model="options.delay" />
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>消息类型: </label>
+                        <select class="form-control" ng-model="options.method">
+                            <option value="primary">一般消息</option>
+                            <option value="info">通知消息</option>
+                            <option value="success">成功消息</option>
+                            <option value="warning">警告消息</option>
+                            <option value="error">错误消息</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label>是否点击关闭: </label>
+                        <select class="form-control" ng-model="options.closeOnClickFlag">
+                            <option value="t">允许</option>
+                            <option value="f">禁止</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn btn-lg btn-primary" ng-click="notify()">添加通知消息</button>
+            </div>
+
+
+            <div class="example-code margin-top-30">
+                <script type="syntaxhighlighter" class="brush: jscript"><![CDATA[
+                    $scope.options = {
+                        title: "通知标题",
+                        message: "通知内容：演示文本消息。",
+                        positionX:  "right",
+                        positionY : "bottom",
+                        method: "primary",
+                        closeOnClick: true,
+                        onClose: undefined,
+                        delay: 5000
+                    };
+
+                    $scope.notify = function() {
+                        switch($scope.options.method) {
+                            case "primary":
+                                uiNotification.primary($scope.options);
+                                break;
+                            case "info":
+                                uiNotification.info($scope.options);
+                                break;
+                            case "success":
+                                uiNotification.success($scope.options);
+                                break;
+                            case "warning":
+                                uiNotification.warning($scope.options);
+                                break;
+                            case "error":
+                                uiNotification.error($scope.options);
+                                break;
+                        }
+                    }
+                ]]></script>
+            </div>
+
+        </ui-panel>
+
+        <ui-panel>
+            <ui-panel-heading><h3>2. 回调函数</h3></ui-panel-heading>
+            <p>设置<code>onClose</code>参数，在提示结束时进行回调.</p>
+            <div class="example margin-top-20">
+                <button class="btn btn-primary btn-lg" ng-click="onClose()">回调函数</button>
+            </div>
+
+
+            <div class="example-code margin-top-30">
+                <script type="syntaxhighlighter" class="brush: jscript"><![CDATA[
+                    $scope.onClose = function() {
+                        $scope.options.onClose = function() {
+                            uiAlert.success('回调成功！');
+                        }
+                        uiNotification.primary($scope.options).then(function(data){
+                             $scope.options.onClose = undefined;
+                        });
+                    };
+                ]]></script>
+            </div>
+
+        </ui-panel>
+
+        <ui-panel>
+            <ui-panel-heading><h3>3. 关闭单个通知</h3></ui-panel-heading>
+            <p>通过<code>uiNotification.clear(args)</code>方法.关闭单个通知</p>
+            <div class="example margin-top-20">
+                <button class="btn btn-primary btn-lg" ng-click="setDelayFalse()">通知消息</button>
+                <button class="btn btn-warning btn-lg" ng-click="clear()">关闭消息</button>
+                <button class="btn btn-warning btn-lg" ng-click="clearAll()">关闭所有消息</button>
+            </div>
+
+
+            <div class="example-code margin-top-30">
+                <script type="syntaxhighlighter" class="brush: jscript"><![CDATA[
+                    var promise;
+                    $scope.setDelayFalse = function() {
+                        $scope.options.delay = false;
+                        promise = uiNotification.primary($scope.options);
+                    };
+
+                    $scope.clear = function() {
+                        uiNotification.clear(promise);
+                    };
+                ]]></script>
+            </div>
+
+        </ui-panel>
+
+        <!-- 参数 -->
+        <ui-panel>
+            <ui-panel-heading><h3>4. 参数</h3></ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="30%">参数名</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>title</code></td>
+                        <td>string</td>
+                        <td></td>
+                        <td>通知标题</td>
+                    </tr>
+                    <tr>
+                        <td><code>message</code></td>
+                        <td>string</td>
+                        <td></td>
+                        <td>通知正文</td>
+                    </tr>
+                    <tr>
+                        <td><code>type</code></td>
+                        <td><code>primary</code>, <code>info</code>, <code>success</code>, <code>warning</code>, <code>error</code></td>
+                        <td><code>primary</code></td>
+                        <td>使用“新的消息覆盖旧消息”的显示方式</td>
+                    </tr>
+                    <tr>
+                        <td><code>delay</code></td>
+                        <td>int</td>
+                        <td><code>5000</code></td>
+                        <td>通知停留时长,值为<code>false</code>时：不会自动关闭</td>
+                    </tr>
+                    <tr>
+                        <td><code>positionX</code></td>
+                        <td><code>right</code>, <code>left</code>, <code>center</code></td>
+                        <td><code>right</code></td>
+                        <td>横向方向</td>
+                    </tr>
+                    <tr>
+                        <td><code>positionY</code></td>
+                        <td><code>top</code>, <code>bottom</code></td>
+                        <td><code>top</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>replaceMessage</code></td>
+                        <td>boolean</td>
+                        <td><code>false</code></td>
+                        <td>使用“新的消息覆盖旧消息”的显示方式</td>
+                    </tr>
+                    <tr>
+                        <td><code>templateUrl</code></td>
+                        <td>string</td>
+                        <td></td>
+                        <td>使用自定义消息模版</td>
+                    </tr>
+                    <tr>
+                        <td><code>closeOnClick</code></td>
+                        <td>boolean</td>
+                        <td><code>true</code></td>
+                        <td>true: 允许点击关闭，false: 禁止点击关闭</td>
+                    </tr>
+                    <tr>
+                        <td><code>onClose</code></td>
+                        <td>function</td>
+                        <td><code>undefined</code></td>
+                        <td>回调函数</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+
+        <!-- 方法 -->
+        <ui-panel>
+            <ui-panel-heading><h3>5. 方法</h3></ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="30%">方法名</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>uiNotification(), uiNotification.primary()</code></td>
+                        <td>一般消息</td>
+                    </tr>
+                    <tr>
+                        <td><code>uiNotification.info()</code></td>
+                        <td>通知消息</td>
+                    </tr>
+                    <tr>
+                        <td><code>uiNotification.success()</code></td>
+                        <td>成功消息</td>
+                    </tr>
+                    <tr>
+                        <td><code>uiNotification.warning()</code></td>
+                        <td>警告消息</td>
+                    </tr>
+                    <tr>
+                        <td><code>uiNotification.error()</code></td>
+                        <td>错误消息</td>
+                    </tr>
+                    <tr>
+                        <td><code>uiNotification.clearAll()</code></td>
+                        <td>清除所有消息</td>
+                    </tr>
+                    <tr>
+                        <td><code>uiNotification.clear(args)</code></td>
+                        <td>清除单个消息</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+    </section>
+</div>

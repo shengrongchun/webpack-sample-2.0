@@ -1,0 +1,232 @@
+<div class="page-main" ui-syntax-highlighter>
+    <header class="page-header clearfix">
+        <h2><i class="fa fa-puzzle-piece"></i>弹出框</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="#">Web组件</a>
+            </li>
+            <li class="active">
+                <strong>弹出框</strong>
+            </li>
+        </ol>
+    </header>
+    <section>
+        <!-- 基本使用 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>1. 基本使用</h3></ui-panel-heading>
+            <p>设置<code>ui-popover</code>属性，为任意元素添加一小块浮层，用于存放非主要信息。</p>
+            <div class="example margin-top-20">
+                <button ui-popover="弹出框内容" type="button" class="btn btn-lg btn-primary">点我弹出/隐藏弹出框</button>
+            </div>
+            <div class="example-code">
+                <pre name="code" class="brush: xml">
+                    <button ui-popover="弹出框内容" type="button" class="btn btn-lg btn-primary">点我弹出/隐藏弹出框</button>
+                </pre>
+            </div>
+        </ui-panel>
+
+        <!-- 位置 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>2. 显示位置</h3></ui-panel-heading>
+            <p>设置<code>popover-placement</code>属性，控制弹出方向。</p>
+            <div class="example margin-top-20 clearfix">
+                <button class="btn btn-lg btn-primary pull-left" popover-placement="left" ui-popover="我在左面">左面</button>
+                <button class="btn btn-lg btn-primary pull-left margin-left-5" popover-placement="right" ui-popover="我在右面">右面</button>
+                <button class="btn btn-lg btn-primary pull-left margin-left-5" popover-placement="top" ui-popover="我在上面">上面</button>
+                <button class="btn btn-lg btn-primary pull-left margin-left-5" popover-placement="bottom" ui-popover="我在下面">下面</button>
+            </div>
+            <div class="example-code">
+                <pre name="code" class="brush: xml">
+                    <button class="btn btn-lg btn-primary pull-left" popover-placement="left" ui-popover="我在左面">左面</button>
+                    <button class="btn btn-lg btn-primary pull-left" popover-placement="right" ui-popover="我在右面">右面</button>
+                    <button class="btn btn-lg btn-primary pull-left" popover-placement="top" ui-popover="我在上面">上面</button>
+                    <button class="btn btn-lg btn-primary pull-left" popover-placement="bottom" ui-popover="我在下面">下面</button>
+                </pre>
+            </div>
+        </ui-panel>
+
+        <!-- 显示弹出框标题 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>3. 显示弹出框标题</h3></ui-panel-heading>
+            <p>添加元素<code>popover-title</code>属性使弹出框显示标题。</p>
+            <div class="example margin-top-20">
+                <button ui-popover="带标题的弹出框，弹出框内容。" popover-title="弹出框标题" type="button" class="btn btn-lg btn-primary">带标题的弹出框</button>
+            </div>
+            <div class="example-code">
+                <pre name="code" class="brush: xml">
+                    <button ui-popover="带标题的弹出框，弹出框内容。" popover-title="弹出框标题" type="button" class="btn btn-lg btn-primary">带标题的弹出框</button>
+                </pre>
+            </div>
+        </ui-panel>
+
+        <!-- 触发事件 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>4. 触发事件</h3></ui-panel-heading>
+            <p>通过使用 <code>popover-trigger="focus"</code> 触发器可以在失焦时让弹出框消失。其它触发事件的值有：<code>mouseenter</code>, <code>click</code>, <code>none</code></p>
+            <div class="note">
+                <h4>实现“失焦时消失”的效果需要一些额外的代码</h4>
+                <p>为了更好的跨浏览器和跨平台效果，你必须使用 <code>&lt;a&gt;</code> 标签，不能使用 <code>&lt;button&gt;</code> 标签，并且，还必须包含 <code>role="button"</code> 和 <code>tabindex</code> 属性。</p>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>显示触发事件</th>
+                        <th>隐藏触发事件</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>mouseenter</code></td>
+                        <td><code>mouseleave</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>click</code></td>
+                        <td><code>click</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>focus</code></td>
+                        <td><code>blur</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>none</code></td>
+                        <td><code>''</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="example margin-top-20 clearfix">
+                <a tabindex="0" class="btn btn-lg btn-primary pull-left" role="button" ui-popover="弹出框内容" popover-trigger="focus">失焦时消失的弹出框</a>
+                <button class="btn btn-lg btn-primary pull-left margin-left-5" ui-popover="弹出框内容" popover-trigger="mouseenter">鼠标移入显示弹出框</button>
+            </div>
+            <div class="example-code">
+                <pre name="code" class="brush: xml">
+                    <a tabindex="0" class="btn btn-lg btn-primary pull-left" role="button" ui-popover="弹出框内容" popover-trigger="focus">失焦时消失的弹出框</a>
+                    <button class="btn btn-lg btn-primary pull-left" ui-popover="弹出框内容" popover-trigger="mouseenter">鼠标移入显示弹出框</button>
+                </pre>
+            </div>
+        </ui-panel>
+
+        <!-- 支持html的提示框 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>5. 支持html的提示框</h3></ui-panel-heading>
+            <div class="example margin-top-20 clearfix">
+                <button class="btn btn-primary pull-left" ui-popover-html="vm.htmlPopover">我的内容支持html</button>
+                <button class="btn btn-primary pull-left margin-left-5" ui-popover-template="'src/scripts/doc/pages/components/popover/popover.tpl.html'">我的内容支持模版</button>
+            </div>
+        </ui-panel>
+        <ui-panel class="no-padding" panel-toolbar="false">
+            <ui-tabset>
+                <ui-tab>
+                    <ui-tab-heading>HTML</ui-tab-heading>
+                    <pre name="code" class="brush: xml">
+                        <button class="btn btn-primary pull-left" ui-popover-html="vm.htmlPopover">我的内容支持html</button>
+                        <button class="btn btn-primary pull-left" ui-popover-template="'scripts/demo/pages/components/popover/popover.tpl.html'">我的内容支持模版</button>
+                    </pre>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>Controller</ui-tab-heading>
+                    <pre name="code" class="brush: jscript">
+                        // 需要使用$sce.trustAsHtml()方法对html进行转换
+                        $scope.htmlTooltip = $sce.trustAsHtml('<em>我是斜体</em>, <b>我是粗体</b>');
+                    </pre>
+                </ui-tab>
+                <ui-tab>
+                    <ui-tab-heading>Template</ui-tab-heading>
+                    <pre name="code" class="brush: xml">
+                        <div>
+                            <p><b>我来自模版。</b><em>我可以显示斜体</em></p>
+                            <p><b>我可以显示粗体</b></p>
+                        </div>
+                    </pre>
+                </ui-tab>
+            </ui-tabset>
+        </ui-panel>
+
+        <!-- 指令 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>6. 指令</h3></ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>指令名</th>
+                        <th>默认值</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>ui-popover</code></td>
+                        <td>null</td>
+                        <td>弹出框的文字内容。会自动转义其中的html，如果需要包含html，请使用<code>ui-popover-template</code> 或 <code>ui-popover-html</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>ui-popover-template</code></td>
+                        <td>null</td>
+                        <td>使用模版显示弹出框内容。注意：模版中需要有一个根元素包裹其中的内容。</td>
+                    </tr>
+                    <tr>
+                        <td><code>ui-popover-html</code></td>
+                        <td>null</td>
+                        <td>绑定弹出框的内容，支持html。注意：传入的值为$scope中的变量名，并且需要通过$sce.trustAsHtml()方法进行转换。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+
+        <!-- 属性 -->
+        <ui-panel panel-toolbar="false">
+            <ui-panel-heading><h3>7. 属性</h3></ui-panel-heading>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>属性名</th>
+                        <th>默认值</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>popover-title</code></td>
+                        <td>null</td>
+                        <td>弹出框标题</td>
+                    </tr>
+                    <tr>
+                        <td><code>popover-placement</code></td>
+                        <td>top</td>
+                        <td>弹出框的显示位置。可选值: <code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>popover-animation</code></td>
+                        <td>true</td>
+                        <td>是否使用动画淡入(淡出)显示(隐藏)弹出框</td>
+                    </tr>
+                    <tr>
+                        <td><code>popover-popup-delay</code></td>
+                        <td>0</td>
+                        <td>延迟显示弹出框</td>
+                    </tr>
+                    <tr>
+                        <td><code>popover-trigger</code></td>
+                        <td>mouseenter</td>
+                        <td>触发方式。可选值: <code>mouseenter</code>, <code>focus</code>, <code>click</code>, <code>none</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>popover-append-to-body</code></td>
+                        <td>false</td>
+                        <td>是否将弹出框的代码插入<code>&lt;body&gt;</code>中。默认插入到当前元素的父级元素中。用于处理弹出框所在容器<code>overflow:hidden</code>情况。</td>
+                    </tr>
+                    <tr>
+                        <td><code>popover-is-open</code></td>
+                        <td>false</td>
+                        <td>是否默认打开弹出框</td>
+                    </tr>
+                </tbody>
+            </table>
+        </ui-panel>
+
+        
+    </section>
+</div>

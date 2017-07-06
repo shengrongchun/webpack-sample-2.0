@@ -107,19 +107,19 @@
             "name": "提示、警告组件",
             "icon": "commenting",
             "children": [{
-                "link": "#/components/tooltip",
+                "link": "#!/components/tooltip",
                 "name": "提示 - Tooltip",
                 "icon": "caret-right"
             }, {
-                "link": "#/components/popover",
+                "link": "#!/components/popover",
                 "name": "弹出框 - Popover",
                 "icon": "caret-right"
             }, {
-                "link": "#/components/notification",
+                "link": "#!/components/notification",
                 "name": "通知消息 - Notification",
                 "icon": "caret-right"
             }, {
-                "link": "#/components/alert",
+                "link": "#!/components/alert",
                 "name": "弹出对话框 - Alert",
                 "icon": "caret-right"
             }]

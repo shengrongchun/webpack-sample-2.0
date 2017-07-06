@@ -6,13 +6,15 @@ class Controller {
         "ngInject";
 
         this.items = ['item1','item2','item3'];
+        this.selectedItem = null;
         var $ctrl = this;
 
-        this.open = function (size) {
+        this.open = function (size, animate, position) {
 
             var modalInstance = $uiModal.open({
 
                 //animation: true, //是否动画,默认是
+                animate: animate,//动画样式，scale、shake、默认是fade
                 //appendTo: 'body', //将模态追加到特定元素，默认为body
                 //backdrop: true, //是否显示模态框的背景色，默认是true,如果是static，禁止点击背景色关闭模态框
                 //backdropClass: 'xxx', //给背景加上class,定制自己的背景
@@ -24,7 +26,8 @@ class Controller {
                 //windowClass: 'x', //给模态框加class
                 //windowTemplateUrl: //模态框模板
                 //windowTopClass: 'xx', //给模态框顶部类加class
-
+                closeBtn: true, //是否显示关闭icon
+                position: position, //content内容位置，默认是top
                 size: size, //modal尺寸
                 controller: modalController, //模态框控制器
                 controllerAs: 'vm', //控制器别名
@@ -42,7 +45,7 @@ class Controller {
             });
 
             modalInstance.result.then(function (selectedItem) {
-               console.log(selectedItem);
+               $ctrl.selectedItem = selectedItem;
             }, function () {
                console.log("取消");
             });
